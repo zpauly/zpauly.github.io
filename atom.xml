@@ -5,11 +5,11 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-18T13:15:09.000Z</updated>
+  <updated>2016-10-18T14:55:59.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>zpauly</name>
     
   </author>
   
@@ -20,14 +20,14 @@
     <link href="http://yoursite.com/2016/10/18/Picasso%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/18/Picasso源码学习（一）/</id>
     <published>2016-10-18T12:53:34.000Z</published>
-    <updated>2016-10-18T13:15:09.000Z</updated>
+    <updated>2016-10-18T14:55:59.000Z</updated>
     
-    <content type="html"><![CDATA[<p>从这里开始我会开始阅读一款来自于Square的大名鼎鼎的图片处理库<strong><em>Picasso</em></strong>，一方面是一种学习记录，另一方面也是一种督促啦。</p>
+    <content type="html"><![CDATA[<!--excerpt-->
 <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>一切的第一步当然是首先把源码从github上clone下来。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/square/picasso.git</div></pre></td></tr></table></figure>
 <p>稍等片刻，<strong><em>Picasso</em></strong>的源码就被clone到了自己的电脑上。</p>
 <p>当然，现在我们这里的就是<strong><em>Picasso</em></strong>的作者所commit的最新的代码，但是所要看的并不是这个内容，这里需要选择一个release版本。</p>
-<img src="/images/Picasso源码学习/picasso0.png" class="picasso0 Picasso">
+<img class="picasso0 Picasso picasso0.png">
 <p>之所以选的是最早的1.0.0版本，是因为作为最早的版本，后面的所有版本都是基于这个版本进行编写的，阅读最早的版本可以更好地了解整个项目的构架。另外，作为最早的版本，这个版本肯定也是所有版本里最容易阅读的。我们接着将项目checkout到该版本。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout dea2e24</div></pre></td></tr></table></figure>
 <p>接下来就是酥爽的源码阅读之旅了。</p>
@@ -62,13 +62,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">complete</span><span class="params">()</span> </span>&#123;</div><div class="line">    ImageView target = <span class="keyword">this</span>.target.get();</div><div class="line">    <span class="keyword">if</span> (target != <span class="keyword">null</span>) &#123;</div><div class="line">      Context context = picasso.context;</div><div class="line">      <span class="keyword">boolean</span> debugging = picasso.debugging;</div><div class="line">      PicassoDrawable.setBitmap(target, context, result, loadedFrom, noFade, debugging);</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p>这里涉及到了一个工具类<strong><em>PicassoDrawable</em></strong>，调用其中的<strong><em>setBitmap</em></strong>方法来加载图片。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setBitmap</span><span class="params">(ImageView target, Context context, Bitmap bitmap, LoadedFrom loadedFrom,</span></span></div><div class="line">      <span class="keyword">boolean</span> noFade, <span class="keyword">boolean</span> debugging) &#123;</div><div class="line">    PicassoDrawable picassoDrawable = extractPicassoDrawable(target);</div><div class="line">    <span class="keyword">if</span> (picassoDrawable != <span class="keyword">null</span>) &#123;</div><div class="line">      picassoDrawable.setBitmap(bitmap, loadedFrom, noFade);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      target.setImageDrawable(<span class="keyword">new</span> PicassoDrawable(context, bitmap, loadedFrom, noFade, debugging));</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>到这里算是彻底地完成了整个请求加载到流程。后面我还会去分析这个库的其他部分，所以说。。。。。。我就先去歇一会啦！！！</p>
-]]></content>
+<p>到这里算是彻底地完成了整个请求加载到流程。后面我还会去分析这个库的其他部分，所以说。。。。。。我就先去歇一会啦！！！</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;从这里开始我会开始阅读一款来自于Square的大名鼎鼎的图片处理库&lt;strong&gt;&lt;em&gt;Picasso&lt;/em&gt;&lt;/strong&gt;，一方面是一种学习记录，另一方面也是一种督促啦。&lt;/p&gt;
-&lt;h1 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlin
+      &lt;img src=&quot;/2016/10/18/Picasso源码学习（一）/picasso_cover.png&quot; alt=&quot;picasso_cover.png&quot; title=&quot;&quot;&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;从这里开始我会开始阅读一款来自于Square的大名鼎鼎的图片处理库&lt;strong&gt;&lt;em&gt;Picasso&lt;/em&gt;&lt;/strong&gt;，将这个过程以博客的形式记录下来，一方面是一种学习记录，另一方面也是一种督促啦。
     
     </summary>
     
@@ -86,9 +85,9 @@
     <link href="http://yoursite.com/2016/09/28/%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/"/>
     <id>http://yoursite.com/2016/09/28/一个新的开始/</id>
     <published>2016-09-27T16:00:00.000Z</published>
-    <updated>2016-10-18T13:16:57.000Z</updated>
+    <updated>2016-10-18T14:36:45.000Z</updated>
     
-    <content type="html"><![CDATA[<p>从开始学习Android到现在不知不觉有一年出头了，作为学生也总算是到了大三了。但是，一名coder现在才想起来开个自己的博客好像也是稍微有点迟啊（滑稽脸）。虽然不知道未来在这博客里能写多少有意思的东西，但是既然已经开了，那就把它作为一个标志，象征一个新的学习阶段的开始吧。</p>
+    <content type="html"><![CDATA[<!--excerpt-->
 <h2 id="好像并没有学多少东西啊"><a href="#好像并没有学多少东西啊" class="headerlink" title="好像并没有学多少东西啊"></a>好像并没有学多少东西啊</h2><p>我自己是做Android的，不过现在想想貌似会的也就是Android上的东西。从大一开始接触Java，那么吊儿郎当地学了那么久，不敢说自己会多少东西，但至少装装样子还是可以的。</p>
 <p>其实说到底我所学的东西也就是“Java——Android”这样简单的两点一线，再往细的说其实也就仅限于Android应用的开发。虽然曾经也看了一些Android的源码，想要深入地去学学，但是现在仔细想想，真的是一点都记不起来了（这应该也是开博客的原因吧）。</p>
 <p>想到这里不禁感慨要学的东西还有好多，再加上明年就要不得不去面对实习的压力了，觉得貌似将会度过大学期间最为充（麻）实（烦）的一年了。所以就像上面写的一样，从这篇博客开始也得稍微振作一下，把我这个懒家伙所有能拿出来的精力给好好释放一下了。</p>
@@ -96,12 +95,11 @@
 <p>写项目刚开始的时候还是感觉自己挺得心应手，但是随着代码量逐渐多了起来，程序的模块逐渐复杂了起来，重构以前写的模块已经成了家常便饭，想想真心觉得自己对工程项目的处理水平还真是有限。为了对自己的这方面有所提高，首当其冲的就是设计模式的学习了。虽然设计模式以前也有所学习，但是似乎也仅限于理论水平，于是这次决定把这东西再重新拾起来，并把它运用起来。除了重学设计模式这个想法外，看看别人写的项目也是必不可少的，github上的大神那么多，取取经自然是理所当然的啦。</p>
 <p>另外就是决定好好拆一拆轮子。上面也提到我其实对Android的学习也仅仅一直都是应用层这一面，况且自我感觉学的还不深，所以拆一拆自然也就很有必要了。对于拆轮子这种事，肯定还是得挑那些超级有名的轮子来拆比较好。我的想法是首先从Picasso这个图片加载库开始，然后就是OkHttp、EventBus、RxJava……（真是又多又难啊，不知道我什么时候才能看完）还有一个方面就是Android源码的学习。对于这个，市面上这么多不错的书，配合着去看源码，本人还是有些自信的。</p>
 <p>最后，我还有的一个想法就是能够多点一些技能树，毕竟只会这么一个方面的内容终归还是不够的。第一个想点点技能树就是C++了。虽然100个不愿意，但是学到现在再也绕不过C++终归是个不争点事实，不管是要学NDK开发还是以后其他的内容C++就在眼前，只能面对面硬杠了。另外就是自己也有那么一点想学Python的意思，这个倒不是什么必须的，就是觉得挺有意思，就当本职外的兴趣在休闲的时候学学吧。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>往上一看，虽然写的短，但是要干的事情真是多啊，不多说了，要去学习了。。。。。。</p>
-]]></content>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>往上一看，虽然写的短，但是要干的事情真是多啊，不多说了，要去学习了。。。。。。</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;从开始学习Android到现在不知不觉有一年出头了，作为学生也总算是到了大三了。但是，一名coder现在才想起来开个自己的博客好像也是稍微有点迟啊（滑稽脸）。虽然不知道未来在这博客里能写多少有意思的东西，但是既然已经开了，那就把它作为一个标志，象征一个新的学习阶段的开始吧。
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;从开始学习Android到现在不知不觉有一年出头了，作为学生也总算是到了大三了。但是，一名coder现在才想起来开个自己的博客好像也是稍微有点迟啊（滑稽脸）。虽然不知道未来在这博客里能写多少有意思的东西，但是既然已经开了，那就把它作为一个标志，象征一个新的学习阶段的开始吧。
     
     </summary>
     
