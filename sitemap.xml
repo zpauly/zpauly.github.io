@@ -2,6 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/02/06/Android%E6%8F%92%E4%BB%B6%E5%8C%96%E5%85%A5%E9%97%A8%E8%B5%84%E6%96%99/</loc>
+    
+    <lastmod>2017-02-06T15:17:57.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/10/18/Picasso%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
+    
+    <lastmod>2017-02-06T15:17:47.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/10/19/Picasso%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
+    
+    <lastmod>2017-02-06T15:17:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/09/28/%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</loc>
+    
+    <lastmod>2017-02-06T15:17:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/links/index.html</loc>
+    
+    <lastmod>2017-02-06T14:56:25.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/index.html</loc>
+    
+    <lastmod>2017-02-06T14:50:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2017-02-06T14:45:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/archives/index.html</loc>
+    
+    <lastmod>2017-02-06T14:44:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/02/06/NDK%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJNI%E8%A7%84%E5%88%99/</loc>
     
     <lastmod>2017-02-06T13:52:53.000Z</lastmod>
@@ -9,58 +65,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/02/06/Android%E6%8F%92%E4%BB%B6%E5%8C%96%E5%85%A5%E9%97%A8%E8%B5%84%E6%96%99/</loc>
-    
-    <lastmod>2017-02-06T13:49:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/02/06/NDK%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B0%9D%E8%AF%95JNI/</loc>
     
     <lastmod>2017-02-06T05:28:36.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/10/18/Picasso%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
-    
-    <lastmod>2017-02-06T04:09:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/10/19/Picasso%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
-    
-    <lastmod>2016-10-20T07:43:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/09/28/%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/</loc>
-    
-    <lastmod>2016-10-20T07:41:41.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/all-tags/index.html</loc>
-    
-    <lastmod>2016-09-30T12:57:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/all-categories/index.html</loc>
-    
-    <lastmod>2016-09-30T12:57:40.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/all-archives/index.html</loc>
-    
-    <lastmod>2016-09-30T12:57:22.000Z</lastmod>
     
   </url>
   

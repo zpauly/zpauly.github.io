@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-06T13:49:12.000Z</updated>
+  <updated>2017-02-06T15:17:57.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,10 +20,11 @@
     <link href="http://yoursite.com/2017/02/06/Android%E6%8F%92%E4%BB%B6%E5%8C%96%E5%85%A5%E9%97%A8%E8%B5%84%E6%96%99/"/>
     <id>http://yoursite.com/2017/02/06/Android插件化入门资料/</id>
     <published>2017-02-06T13:33:10.000Z</published>
-    <updated>2017-02-06T13:49:12.000Z</updated>
+    <updated>2017-02-06T15:17:57.000Z</updated>
     
-    <content type="html"><![CDATA[<!--excerpt-->
+    <content type="html"><![CDATA[<a id="more"></a>
 <p>最近一直在学习Android Framework层的源码，而插件化自当是我想到的关于这方面的最好实践。但毕竟插件化的难度还是很大的，因此在插件化的入门过程中，自己总是会绕得云里雾里。不过幸运的是我发现了一个系列的文章，可以说是大大提高了我这方面的学习效率。</p>
+<!--excerpt-->
 <p><a href="http://weishu.me/2016/01/28/understand-plugin-framework-proxy-hook/" target="_blank" rel="external">Hook机制之动态代理</a></p>
 <p><a href="http://weishu.me/2016/02/16/understand-plugin-framework-binder-hook/" target="_blank" rel="external">Hook机制之Binder Hook</a></p>
 <p><a href="http://weishu.me/2016/03/07/understand-plugin-framework-ams-pms-hook/" target="_blank" rel="external">Hook机制之AMS&amp;PMS</a></p>
@@ -32,12 +33,13 @@
 <p><a href="http://weishu.me/2016/04/12/understand-plugin-framework-receiver/" target="_blank" rel="external">广播的管理</a></p>
 <p><a href="http://weishu.me/2016/05/11/understand-plugin-framework-service/" target="_blank" rel="external">Service的插件化</a></p>
 <p><a href="http://weishu.me/2016/07/12/understand-plugin-framework-content-provider/" target="_blank" rel="external">ContentProvider的插件化</a></p>
-<p>在这里做个分享，顺便自己也收藏一下，以后要是有什么记不得的也常来看看(ง •̀_•́)ง</p>]]></content>
+<p>在这里做个分享，顺便自己也收藏一下，以后要是有什么记不得的也常来看看(ง •̀_•́)ง</p>
+]]></content>
     
     <summary type="html">
     
       &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;最近一直在学习Android Framework层的源码，而插件化自当是我想到的关于这方面的最好实践。但毕竟插件化的难度还是很大的，因此在插件化的入门过程中，自己总是会绕得云里雾里。不过幸运的是我发现了一个系列的文章，可以说是大大提高了我这方面的学习效率。&lt;/p&gt;
+&lt;p&gt;最近一直在学习Android Framework层的源码，而插件化自当是我想到的关于这方面的最好实践。但毕竟插件化的难度还是很大的，因此在插件化的入门过程中，自己总是会绕得云里雾里。不过幸运的是我发现了一个系列的文章，可以说是大大提高了我
     
     </summary>
     
@@ -57,7 +59,8 @@
     <published>2017-02-06T04:20:00.000Z</published>
     <updated>2017-02-06T13:52:53.000Z</updated>
     
-    <content type="html"><![CDATA[<!--excerpt-->
+    <content type="html"><![CDATA[<a id="more"></a>
+<!--excerpt-->
 <h5 id="JVM查找native方法"><a href="#JVM查找native方法" class="headerlink" title="JVM查找native方法"></a>JVM查找native方法</h5><p>JVM 查找 native 方法有两种方式：</p>
 <ul>
 <li>按照 JNI 规范的命名规则</li>
@@ -71,11 +74,14 @@
 <img src="/2017/02/06/NDK开发学习（二）：JNI规则/NDK开发学习（二）：JNI规则_1.png" alt="NDK开发学习（二）：JNI规则_1.png" title="">
 <img src="/2017/02/06/NDK开发学习（二）：JNI规则/NDK开发学习（二）：JNI规则_2.png" alt="NDK开发学习（二）：JNI规则_2.png" title="">
 <p>值得注意的是JNI中所与Java中的基本数据类型对应的类型的值是可以在程序中直接使用到的，但是引用数据类型则不行。这是由于与基本类型不同，引用类型所传入的是一个指针类型，指向那个对象在JVM内存中的地址。要想从JVM内存中访问到这些数据，就需要通过<code>JNIEnv*</code>来实现。</p>
-<p>##### </p>]]></content>
+<p>##### </p>
+]]></content>
     
     <summary type="html">
     
       &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;!--excerpt--&gt;
+&lt;h5 id=&quot;JVM查找native方法&quot;&gt;&lt;a href=&quot;#JVM查找native方法&quot; class=&quot;headerlink&quot; title=&quot;JVM查找native方法&quot;&gt;&lt;/a&gt;JVM查找native方法&lt;
     
     </summary>
     
@@ -93,7 +99,8 @@
     <published>2017-02-06T03:12:30.000Z</published>
     <updated>2017-02-06T05:28:36.000Z</updated>
     
-    <content type="html"><![CDATA[<!--excerpt-->
+    <content type="html"><![CDATA[<a id="more"></a>
+<!--excerpt-->
 <p>注：此过程在mac环境下</p>
 <h3 id="JNI开发流程简介"><a href="#JNI开发流程简介" class="headerlink" title="JNI开发流程简介"></a>JNI开发流程简介</h3><ul>
 <li>编写声明了 native 方法的 Java 类</li>
@@ -124,11 +131,15 @@
 <li>-framework JavaVM -I：编译 JNI 需要用到 JVM 的头文件(<code>jni.h</code>)，第一个目录是平台无关的，第二个目录是与操作系统平台相关的头文件</li>
 </ul>
 <h5 id="六-运行Java程序"><a href="#六-运行Java程序" class="headerlink" title="六.运行Java程序"></a>六.运行Java程序</h5><p>运行效果</p>
-<img src="/2017/02/06/NDK开发学习（一）：尝试JNI/NDK开发学习（一）：尝试JNI_1.png" alt="NDK开发学习（一）：尝试JNI_1.png" title="">]]></content>
+<img src="/2017/02/06/NDK开发学习（一）：尝试JNI/NDK开发学习（一）：尝试JNI_1.png" alt="NDK开发学习（一）：尝试JNI_1.png" title="">
+]]></content>
     
     <summary type="html">
     
       &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;!--excerpt--&gt;
+&lt;p&gt;注：此过程在mac环境下&lt;/p&gt;
+&lt;h3 id=&quot;JNI开发流程简介&quot;&gt;&lt;a href=&quot;#JNI开发流程简介&quot; class=&quot;headerlink&quot; title=&quot;JNI开发流程简介&quot;&gt;&lt;/a&gt;JNI开发流
     
     </summary>
     
@@ -144,10 +155,11 @@
     <link href="http://yoursite.com/2016/10/19/Picasso%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/19/Picasso源码学习（二）/</id>
     <published>2016-10-18T16:00:00.000Z</published>
-    <updated>2016-10-20T07:43:56.000Z</updated>
+    <updated>2017-02-06T15:17:37.000Z</updated>
     
-    <content type="html"><![CDATA[<!--excerpt-->
+    <content type="html"><![CDATA[<a id="more"></a>
 <p>继上一篇文章简单分析了一下<strong><em>Picasso</em></strong>的图片加载流程，这次就接着小小地研究一把图片加载中最为重要的一个部分——缓存机制。当然，这段源码阅读过程自然是以上一篇文章中<a href="https://zpauly.github.io/2016/10/18/Picasso%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="external"><strong><em>Picasso请求加载流程</em></strong></a>为基础的。</p>
+<!--excerpt-->
 <h1 id="源码阅读"><a href="#源码阅读" class="headerlink" title="源码阅读"></a>源码阅读</h1><p>从上一篇的内容来看，在图片加载的过程中调用了一个方法。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Picasso.quickMemoryCacheCheck(target, requestKey);</div></pre></td></tr></table></figure>
 <p>这个方法从名字里也可以看出来它的作用是从内存中检查所需的<strong><em>Bitmap</em></strong>资源是否已经存在，如果存在则从缓存中取出来，所以我们首先来看看这个方法干了什么。</p>
@@ -163,12 +175,13 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> Response <span class="title">load</span><span class="params">(String url, <span class="keyword">boolean</span> localCacheOnly)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    HttpURLConnection connection = client.open(<span class="keyword">new</span> URL(url));</div><div class="line">    connection.setUseCaches(<span class="keyword">true</span>);</div><div class="line">    <span class="keyword">if</span> (localCacheOnly) &#123;</div><div class="line">      connection.setRequestProperty(<span class="string">"Cache-Control"</span>, <span class="string">"only-if-cached"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">boolean</span> fromCache = parseResponseSourceHeader(connection.getHeaderField(RESPONSE_SOURCE));</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Response(connection.getInputStream(), fromCache);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p>从这里我们便可以一眼看出来，在发起请求的时候，所设置的属性便是对请求内容进行缓存，也就是说如果<strong><em>OkHttp</em></strong>的缓存中已经有了所需的图片资源，那就直接获取，如果没有则继续请求。</p>
 <p>通过我们的分析算是证实了<strong><em>Picasso</em></strong>的磁盘缓存机制是通过<strong><em>OkHttp</em></strong>来实现的。但是，Square公司早已推了<strong><em>OkHttp3</em></strong>，但即使是checkout到最新版本的<strong><em>Picasso</em></strong>也并没有从中发现<strong><em>OkHttp3</em></strong>到影子，这就带来一个问题，实际使用<strong><em>Picasso</em></strong>到时候就会由于出现没有使用<strong><em>OkHttp</em></strong>的情况而出现无法使用磁盘缓存的问题。这里便向想要结局这个问题的同学推荐一个库<a href="https://github.com/JakeWharton/picasso2-okhttp3-downloader" target="_blank" rel="external">picasso2-okhttp3-downloader</a>，这时Jake大神为这个问题所专门写的，其中的实现机制其实很简单，和<strong><em>Picasso</em></strong>内的<strong><em>OkHttpLoader</em></strong>如出一辙，一看便知。</p>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>这部分的不长，主要就是我自己查看<strong><em>Picasso</em></strong>缓存机制的一个简单的流程记录，内容也很简单，同时又不可或缺所以就单独拿出来了，还是恨通俗易懂的。</p>]]></content>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>这部分的不长，主要就是我自己查看<strong><em>Picasso</em></strong>缓存机制的一个简单的流程记录，内容也很简单，同时又不可或缺所以就单独拿出来了，还是恨通俗易懂的。</p>
+]]></content>
     
     <summary type="html">
     
       &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;继上一篇文章简单分析了一下&lt;strong&gt;&lt;em&gt;Picasso&lt;/em&gt;&lt;/strong&gt;的图片加载流程，这次就接着小小地研究一把图片加载中最为重要的一个部分——缓存机制。当然，这段源码阅读过程自然是以上一篇文章中&lt;a href=&quot;https://zpauly.github.io/2016/10/18/Picasso%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;&lt;em&gt;Picasso请求加载流程&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt;为基础的。&lt;/p&gt;
+&lt;p&gt;继上一篇文章简单分析了一下&lt;strong&gt;&lt;em&gt;Picasso&lt;/em&gt;&lt;/strong&gt;的图片加载流程，这次就接着小小地研究一把图片加载中最为重要的一个部分——缓存机制。当然，这段源码阅读过程自然是以上一篇文章中&lt;a href=&quot;ht
     
     </summary>
     
@@ -186,11 +199,12 @@
     <link href="http://yoursite.com/2016/10/18/Picasso%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/18/Picasso源码学习（一）/</id>
     <published>2016-10-18T12:53:34.000Z</published>
-    <updated>2017-02-06T04:09:30.000Z</updated>
+    <updated>2017-02-06T15:17:47.000Z</updated>
     
-    <content type="html"><![CDATA[<!--excerpt-->
+    <content type="html"><![CDATA[<a id="more"></a>
 <img src="/2016/10/18/Picasso源码学习（一）/picasso_cover.png" alt="picasso_cover.png" title="">
 <p>从这里开始我会开始阅读一款来自于Square的大名鼎鼎的图片处理库<strong><em>Picasso</em></strong>，将这个过程以博客的形式记录下来，一方面是一种学习记录，另一方面也是一种督促啦。</p>
+<!--excerpt-->
 <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>一切的第一步当然是首先把源码从github上clone下来。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/square/picasso.git</div></pre></td></tr></table></figure>
 <p>稍等片刻，<strong><em>Picasso</em></strong>的源码就被clone到了自己的电脑上。</p>
@@ -230,13 +244,14 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">complete</span><span class="params">()</span> </span>&#123;</div><div class="line">    ImageView target = <span class="keyword">this</span>.target.get();</div><div class="line">    <span class="keyword">if</span> (target != <span class="keyword">null</span>) &#123;</div><div class="line">      Context context = picasso.context;</div><div class="line">      <span class="keyword">boolean</span> debugging = picasso.debugging;</div><div class="line">      PicassoDrawable.setBitmap(target, context, result, loadedFrom, noFade, debugging);</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p>这里涉及到了一个工具类<strong><em>PicassoDrawable</em></strong>，调用其中的<strong><em>setBitmap</em></strong>方法来加载图片。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setBitmap</span><span class="params">(ImageView target, Context context, Bitmap bitmap, LoadedFrom loadedFrom,</span></span></div><div class="line">      <span class="keyword">boolean</span> noFade, <span class="keyword">boolean</span> debugging) &#123;</div><div class="line">    PicassoDrawable picassoDrawable = extractPicassoDrawable(target);</div><div class="line">    <span class="keyword">if</span> (picassoDrawable != <span class="keyword">null</span>) &#123;</div><div class="line">      picassoDrawable.setBitmap(bitmap, loadedFrom, noFade);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      target.setImageDrawable(<span class="keyword">new</span> PicassoDrawable(context, bitmap, loadedFrom, noFade, debugging));</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>到这里算是彻底地完成了整个请求加载到流程。后面我还会去分析这个库的其他部分，所以说。。。。。。我就先去歇一会啦！！！</p>]]></content>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>到这里算是彻底地完成了整个请求加载到流程。后面我还会去分析这个库的其他部分，所以说。。。。。。我就先去歇一会啦！！！</p>
+]]></content>
     
     <summary type="html">
     
       &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;img src=&quot;/2016/10/18/Picasso源码学习（一）/picasso_cover.png&quot; alt=&quot;picasso_cover.png&quot; title=&quot;&quot;&gt;
-&lt;p&gt;从这里开始我会开始阅读一款来自于Square的大名鼎鼎的图片处理库&lt;strong&gt;&lt;em&gt;Picasso&lt;/em&gt;&lt;/strong&gt;，将这个过程以博客的形式记录下来，一方面是一种学习记录，另一方面也是一种督促啦。&lt;/p&gt;
+&lt;p&gt;从这里开始我会开始阅读一款来自于Square的大名鼎鼎的图
     
     </summary>
     
@@ -254,10 +269,11 @@
     <link href="http://yoursite.com/2016/09/28/%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/"/>
     <id>http://yoursite.com/2016/09/28/一个新的开始/</id>
     <published>2016-09-27T16:00:00.000Z</published>
-    <updated>2016-10-20T07:41:41.000Z</updated>
+    <updated>2017-02-06T15:17:08.000Z</updated>
     
-    <content type="html"><![CDATA[<!--excerpt-->
+    <content type="html"><![CDATA[<a id="more"></a>
 <p>从开始学习Android到现在不知不觉有一年出头了，作为学生也总算是到了大三了。但是，一名coder现在才想起来开个自己的博客好像也是稍微有点迟啊（滑稽脸）。虽然不知道未来在这博客里能写多少有意思的东西，但是既然已经开了，那就把它作为一个标志，象征一个新的学习阶段的开始吧。</p>
+<!--excerpt-->
 <h2 id="好像并没有学多少东西啊"><a href="#好像并没有学多少东西啊" class="headerlink" title="好像并没有学多少东西啊"></a>好像并没有学多少东西啊</h2><p>我自己是做Android的，不过现在想想貌似会的也就是Android上的东西。从大一开始接触Java，那么吊儿郎当地学了那么久，不敢说自己会多少东西，但至少装装样子还是可以的。</p>
 <p>其实说到底我所学的东西也就是“Java——Android”这样简单的两点一线，再往细的说其实也就仅限于Android应用的开发。虽然曾经也看了一些Android的源码，想要深入地去学学，但是现在仔细想想，真的是一点都记不起来了（这应该也是开博客的原因吧）。</p>
 <p>想到这里不禁感慨要学的东西还有好多，再加上明年就要不得不去面对实习的压力了，觉得貌似将会度过大学期间最为充（麻）实（烦）的一年了。所以就像上面写的一样，从这篇博客开始也得稍微振作一下，把我这个懒家伙所有能拿出来的精力给好好释放一下了。</p>
@@ -265,12 +281,13 @@
 <p>写项目刚开始的时候还是感觉自己挺得心应手，但是随着代码量逐渐多了起来，程序的模块逐渐复杂了起来，重构以前写的模块已经成了家常便饭，想想真心觉得自己对工程项目的处理水平还真是有限。为了对自己的这方面有所提高，首当其冲的就是设计模式的学习了。虽然设计模式以前也有所学习，但是似乎也仅限于理论水平，于是这次决定把这东西再重新拾起来，并把它运用起来。除了重学设计模式这个想法外，看看别人写的项目也是必不可少的，github上的大神那么多，取取经自然是理所当然的啦。</p>
 <p>另外就是决定好好拆一拆轮子。上面也提到我其实对Android的学习也仅仅一直都是应用层这一面，况且自我感觉学的还不深，所以拆一拆自然也就很有必要了。对于拆轮子这种事，肯定还是得挑那些超级有名的轮子来拆比较好。我的想法是首先从Picasso这个图片加载库开始，然后就是OkHttp、EventBus、RxJava……（真是又多又难啊，不知道我什么时候才能看完）还有一个方面就是Android源码的学习。对于这个，市面上这么多不错的书，配合着去看源码，本人还是有些自信的。</p>
 <p>最后，我还有的一个想法就是能够多点一些技能树，毕竟只会这么一个方面的内容终归还是不够的。第一个想点点技能树就是C++了。虽然100个不愿意，但是学到现在再也绕不过C++终归是个不争点事实，不管是要学NDK开发还是以后其他的内容C++就在眼前，只能面对面硬杠了。另外就是自己也有那么一点想学Python的意思，这个倒不是什么必须的，就是觉得挺有意思，就当本职外的兴趣在休闲的时候学学吧。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>往上一看，虽然写的短，但是要干的事情真是多啊，不多说了，要去学习了。。。。。。</p>]]></content>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>往上一看，虽然写的短，但是要干的事情真是多啊，不多说了，要去学习了。。。。。。</p>
+]]></content>
     
     <summary type="html">
     
       &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;从开始学习Android到现在不知不觉有一年出头了，作为学生也总算是到了大三了。但是，一名coder现在才想起来开个自己的博客好像也是稍微有点迟啊（滑稽脸）。虽然不知道未来在这博客里能写多少有意思的东西，但是既然已经开了，那就把它作为一个标志，象征一个新的学习阶段的开始吧。&lt;/p&gt;
+&lt;p&gt;从开始学习Android到现在不知不觉有一年出头了，作为学生也总算是到了大三了。但是，一名coder现在才想起来开个自己的博客好像也是稍微有点迟啊（滑稽脸）。虽然不知道未来在这博客里能写多少有意思的东西，但是既然已经开了，那就把它作为一个
     
     </summary>
     
