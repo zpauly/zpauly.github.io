@@ -4,8 +4,23 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/02/06/NDK%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B0%9D%E8%AF%95JNI/</loc>
+    <lastmod>2017-02-06T04:09:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>NDK开发学习（一）：尝试JNI</title>
+        <pubTime>2017-02-06T03:12:30.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/10/18/Picasso%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
-    <lastmod>2016-10-20T07:45:16.000Z</lastmod>
+    <lastmod>2017-02-06T04:09:30.000Z</lastmod>
     <data>
         <display>
         <title>Picasso源码学习（一）</title>

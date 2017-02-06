@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="zpauly&#39;s blog">
-    <title>一个新的开始 - zpauly&#39;s blog</title>
+    <title>NDK开发学习（一）：尝试JNI - zpauly&#39;s blog</title>
     <meta name="author" content="zpauly">
     
     
@@ -15,16 +15,15 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="从开始学习Android到现在不知不觉有一年出头了，作为学生也总算是到了大三了。但是，一名coder现在才想起来开个自己的博客好像也是稍微有点迟啊（滑稽脸）。虽然不知道未来在这博客里能写多少有意思的东西，但是既然已经开了，那就把它作为一个标志，象征一个新的学习阶段的开始吧。">
-<meta property="og:type" content="blog">
-<meta property="og:title" content="一个新的开始">
-<meta property="og:url" content="http://yoursite.com/2016/09/28/一个新的开始/index.html">
+    <meta property="og:type" content="blog">
+<meta property="og:title" content="NDK开发学习（一）：尝试JNI">
+<meta property="og:url" content="http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/index.html">
 <meta property="og:site_name" content="zpauly's blog">
-<meta property="og:description" content="从开始学习Android到现在不知不觉有一年出头了，作为学生也总算是到了大三了。但是，一名coder现在才想起来开个自己的博客好像也是稍微有点迟啊（滑稽脸）。虽然不知道未来在这博客里能写多少有意思的东西，但是既然已经开了，那就把它作为一个标志，象征一个新的学习阶段的开始吧。">
-<meta property="og:updated_time" content="2016-10-20T07:41:41.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/NDK开发学习（一）：尝试JNI_1.png">
+<meta property="og:updated_time" content="2017-02-06T04:09:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个新的开始">
-<meta name="twitter:description" content="从开始学习Android到现在不知不觉有一年出头了，作为学生也总算是到了大三了。但是，一名coder现在才想起来开个自己的博客好像也是稍微有点迟啊（滑稽脸）。虽然不知道未来在这博客里能写多少有意思的东西，但是既然已经开了，那就把它作为一个标志，象征一个新的学习阶段的开始吧。">
+<meta name="twitter:title" content="NDK开发学习（一）：尝试JNI">
+<meta name="twitter:image" content="http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/NDK开发学习（一）：尝试JNI_1.png">
     
     
         
@@ -221,21 +220,15 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            一个新的开始
+            NDK开发学习（一）：尝试JNI
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-09-28T00:00:00+08:00">
+    <time itemprop="datePublished" datetime="2017-02-06T11:12:30+08:00">
 	
-		    9月 28, 2016
+		    2月 06, 2017
     	
     </time>
-    
-        <span>发布在 </span>
-        
-    <a class="category-link" href="/categories/随手写写/">随手写写</a>
-
-
     
 </div>
 
@@ -244,33 +237,48 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <!--excerpt-->
-<p>从开始学习Android到现在不知不觉有一年出头了，作为学生也总算是到了大三了。但是，一名coder现在才想起来开个自己的博客好像也是稍微有点迟啊（滑稽脸）。虽然不知道未来在这博客里能写多少有意思的东西，但是既然已经开了，那就把它作为一个标志，象征一个新的学习阶段的开始吧。</p>
-<h2 id="好像并没有学多少东西啊"><a href="#好像并没有学多少东西啊" class="headerlink" title="好像并没有学多少东西啊"></a>好像并没有学多少东西啊</h2><p>我自己是做Android的，不过现在想想貌似会的也就是Android上的东西。从大一开始接触Java，那么吊儿郎当地学了那么久，不敢说自己会多少东西，但至少装装样子还是可以的。</p>
-<p>其实说到底我所学的东西也就是“Java——Android”这样简单的两点一线，再往细的说其实也就仅限于Android应用的开发。虽然曾经也看了一些Android的源码，想要深入地去学学，但是现在仔细想想，真的是一点都记不起来了（这应该也是开博客的原因吧）。</p>
-<p>想到这里不禁感慨要学的东西还有好多，再加上明年就要不得不去面对实习的压力了，觉得貌似将会度过大学期间最为充（麻）实（烦）的一年了。所以就像上面写的一样，从这篇博客开始也得稍微振作一下，把我这个懒家伙所有能拿出来的精力给好好释放一下了。</p>
-<h2 id="一些小小的计划"><a href="#一些小小的计划" class="headerlink" title="一些小小的计划"></a>一些小小的计划</h2><p>现在正在写一个<a href="https://github.com/zpauly/GitHub_Android" target="_blank" rel="external">Github的客户端</a>，这应该是我第一个完整的正式的项目了，所以我首先的期望就是能够把这个项目完完整整的坚持下来，虽然一个人写还是挺累的，但是想到写完之后的效果，另外说不定还能上线，还有点小激动呢。</p>
-<p>写项目刚开始的时候还是感觉自己挺得心应手，但是随着代码量逐渐多了起来，程序的模块逐渐复杂了起来，重构以前写的模块已经成了家常便饭，想想真心觉得自己对工程项目的处理水平还真是有限。为了对自己的这方面有所提高，首当其冲的就是设计模式的学习了。虽然设计模式以前也有所学习，但是似乎也仅限于理论水平，于是这次决定把这东西再重新拾起来，并把它运用起来。除了重学设计模式这个想法外，看看别人写的项目也是必不可少的，github上的大神那么多，取取经自然是理所当然的啦。</p>
-<p>另外就是决定好好拆一拆轮子。上面也提到我其实对Android的学习也仅仅一直都是应用层这一面，况且自我感觉学的还不深，所以拆一拆自然也就很有必要了。对于拆轮子这种事，肯定还是得挑那些超级有名的轮子来拆比较好。我的想法是首先从Picasso这个图片加载库开始，然后就是OkHttp、EventBus、RxJava……（真是又多又难啊，不知道我什么时候才能看完）还有一个方面就是Android源码的学习。对于这个，市面上这么多不错的书，配合着去看源码，本人还是有些自信的。</p>
-<p>最后，我还有的一个想法就是能够多点一些技能树，毕竟只会这么一个方面的内容终归还是不够的。第一个想点点技能树就是C++了。虽然100个不愿意，但是学到现在再也绕不过C++终归是个不争点事实，不管是要学NDK开发还是以后其他的内容C++就在眼前，只能面对面硬杠了。另外就是自己也有那么一点想学Python的意思，这个倒不是什么必须的，就是觉得挺有意思，就当本职外的兴趣在休闲的时候学学吧。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>往上一看，虽然写的短，但是要干的事情真是多啊，不多说了，要去学习了。。。。。。</p>
+<p>注：此过程在mac环境下</p>
+<h3 id="JNI开发流程简介"><a href="#JNI开发流程简介" class="headerlink" title="JNI开发流程简介"></a>JNI开发流程简介</h3><ul>
+<li>编写声明了 native 方法的 Java 类</li>
+<li>将 Java 源代码编译成 class 字节码文件</li>
+<li>用 javah -jni 命令生成<code>.h</code>头文件（javah 是 jdk 自带的一个命令，-jni 参数表示将 class 中用native 声明的函数生成 JNI 规则的函数）</li>
+<li>用本地代码实现<code>.h头</code>文件中的函数</li>
+<li>将本地代码编译成动态库（Windows：*.dll，linux/unix：*.so，mac os x：*.jnilib）</li>
+<li>拷贝动态库至 java.library.path 本地库搜索目录下，并运行 Java 程序</li>
+</ul>
+<h3 id="尝试JNI"><a href="#尝试JNI" class="headerlink" title="尝试JNI"></a>尝试JNI</h3><h5 id="一-定义一个native-函数"><a href="#一-定义一个native-函数" class="headerlink" title="一.定义一个native 函数"></a>一.定义一个native 函数</h5><blockquote>
+<p>HelloWorld.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> &#123;</div><div class="line">    <span class="comment">//所需加载的动态库的完整路径	System.load("/Users/zhangyu/Desktop/JavaProjects/LearnJNI/jni/libHelloWorld.jnilib");</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> String <span class="title">sayHello</span><span class="params">(String name)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">        String text = sayHello(<span class="string">"zpauly"</span>);</div><div class="line">        System.out.println(text);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="二-使用将-java文件编译为-class文件"><a href="#二-使用将-java文件编译为-class文件" class="headerlink" title="二.使用将.java文件编译为.class文件"></a>二.使用将.java文件编译为.class文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javac src/HelloWorld.java -d bin</div></pre></td></tr></table></figure>
+<p>这里我使用-d命令将class文件生成到指定目录下</p>
+<h5 id="三-根据-class文件生成-h头文件"><a href="#三-根据-class文件生成-h头文件" class="headerlink" title="三.根据.class文件生成.h头文件"></a>三.根据.class文件生成.h头文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javah -jni -classpath bin -d jni HelloWorld</div></pre></td></tr></table></figure>
+<p>默认生成的头文件的名称为：包名+类名.h，如：若此处HelloWorld的包名为<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">javah -jni命令参数</div><div class="line"></div><div class="line">- classpath：类搜索路径，这里表示从当前的 bin 目录下查找</div><div class="line">- d：将生成的头文件放到当前的 jni 目录下</div><div class="line">- o： 指定生成的头文件名称，默认以类全路径名生成（包名+类名.h）</div><div class="line"></div><div class="line">此时生成的头文件为</div><div class="line"></div><div class="line">&gt; HelloWorld.h</div><div class="line"></div><div class="line">```c++</div><div class="line">/* DO NOT EDIT THIS FILE - it is machine generated */</div><div class="line">#include &lt;jni.h&gt;</div><div class="line">/* Header for class HelloWorld */</div><div class="line"></div><div class="line">#ifndef _Included_HelloWorld</div><div class="line">#define _Included_HelloWorld</div><div class="line">#ifdef __cplusplus</div><div class="line">extern &quot;C&quot; &#123;</div><div class="line">#endif</div><div class="line">/*</div><div class="line"> * Class:     HelloWorld</div><div class="line"> * Method:    sayHello</div><div class="line"> * Signature: (Ljava/lang/String;)Ljava/lang/String;</div><div class="line"> */</div><div class="line">JNIEXPORT jstring JNICALL Java_HelloWorld_sayHello</div><div class="line">  (JNIEnv *, jclass, jstring);</div><div class="line"></div><div class="line">#ifdef __cplusplus</div><div class="line">&#125;</div><div class="line">#endif</div><div class="line">#endif</div></pre></td></tr></table></figure></p>
+<h5 id="四-实现头文件中的函数"><a href="#四-实现头文件中的函数" class="headerlink" title="四.实现头文件中的函数"></a>四.实现头文件中的函数</h5><blockquote>
+<p>HelloWorld.c</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"HelloWorld.h"</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></div><div class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * Class:     HelloWorld</div><div class="line"> * Method:    sayHello</div><div class="line"> * Signature: (Ljava/lang/String;)Ljava/lang/String;</div><div class="line"> */</div><div class="line"><span class="function">JNIEXPORT jstring JNICALL <span class="title">Java_HelloWorld_sayHello</span><span class="params">(JNIEnv *env, jclass clazz, jstring j_str)</span> </span>&#123;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *c_str = <span class="literal">NULL</span>;</div><div class="line">    <span class="keyword">char</span> buff[<span class="number">128</span>] = &#123; <span class="number">0</span> &#125;;</div><div class="line">    c_str = (*env)-&gt;GetStringUTFChars(env, j_str, <span class="literal">NULL</span>);</div><div class="line">    <span class="keyword">if</span> (c_str == <span class="literal">NULL</span>) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"out of memory.\n"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">    &#125;</div><div class="line">    (*env)-&gt;ReleaseStringUTFChars(env, j_str, c_str);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"Java String:%s\n"</span>, c_str);</div><div class="line">    <span class="built_in">sprintf</span>(buff, <span class="string">"hello %s\n"</span>, c_str);</div><div class="line">    <span class="keyword">return</span> (*env)-&gt;NewStringUTF(env, buff);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></div><div class="line">&#125;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
+<h5 id="五-将写好的c-c-代码编译为本地动态库"><a href="#五-将写好的c-c-代码编译为本地动态库" class="headerlink" title="五.将写好的c/c++代码编译为本地动态库"></a>五.将写好的c/c++代码编译为本地动态库</h5><p>动态库命名规则：lib+动态库文件名+后缀</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc -dynamiclib -o jni/libHelloWorld.jnilib jni/HelloWorld.c -framework JavaVM -I/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/include/darwin</div></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li>-dynamiclib：表示编译成动态链接库</li>
+<li>-o：指定动态链接库编译后生成的路径及文件名</li>
+<li>-framework JavaVM -I：编译 JNI 需要用到 JVM 的头文件(<code>jni.h</code>)，第一个目录是平台无关的，第二个目录是与操作系统平台相关的头文件</li>
+</ul>
+<h5 id="六-运行Java程序"><a href="#六-运行Java程序" class="headerlink" title="六.运行Java程序"></a>六.运行Java程序</h5><p>运行效果</p>
+<img src="/2017/02/06/NDK开发学习（一）：尝试JNI/NDK开发学习（一）：尝试JNI_1.png" alt="NDK开发学习（一）：尝试JNI_1.png" title="">
             
         </div>
     </div>
     <div id="post-footer" class="post-footer main-content-wrap">
-        
-            <div class="post-footer-tags">
-                <span class="text-color-light text-small">标签</span><br/>
-                
-    <a class="tag tag--primary tag--small t-link" href="/tags/思考/">思考</a>
-
-            </div>
         
         <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/18/Picasso源码学习（一）/"  data-tooltip="Picasso源码学习（一）">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -278,7 +286,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/19/Picasso源码学习（二）/" data-tooltip="Picasso源码学习（二）">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -293,17 +301,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/09/28/一个新的开始/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/09/28/一个新的开始/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/09/28/一个新的开始/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -351,7 +359,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/18/Picasso源码学习（一）/"  data-tooltip="Picasso源码学习（一）">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -359,7 +367,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/19/Picasso源码学习（二）/" data-tooltip="Picasso源码学习（二）">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -374,17 +382,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/09/28/一个新的开始/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/09/28/一个新的开始/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/09/28/一个新的开始/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -410,17 +418,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="5">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/09/28/一个新的开始/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/">
                 <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/09/28/一个新的开始/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/09/28/一个新的开始/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -588,9 +596,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://yoursite.com/2016/09/28/一个新的开始/';
+                 this.page.url = 'http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/';
                  
-                    this.page.identifier = '2016/09/28/一个新的开始/';
+                    this.page.identifier = '2017/02/06/NDK开发学习（一）：尝试JNI/';
                  
              };
             (function() {

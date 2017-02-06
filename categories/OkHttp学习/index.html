@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="zpauly&#39;s blog">
-    <title>标签: Picasso - zpauly&#39;s blog</title>
+    <title>分类: OkHttp学习 - zpauly&#39;s blog</title>
     <meta name="author" content="zpauly">
     
     
@@ -17,7 +17,7 @@
     
     <meta property="og:type" content="blog">
 <meta property="og:title" content="zpauly's blog">
-<meta property="og:url" content="http://yoursite.com/tags/Picasso/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/OkHttp学习/index.html">
 <meta property="og:site_name" content="zpauly's blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zpauly's blog">
@@ -220,21 +220,21 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
-                        <a class="link-unstyled" href="/2016/10/19/Picasso源码学习（二）/">
-                            Picasso源码学习（二）
+                        <a class="link-unstyled" href="/2016/10/23/OkHttp学习（一）/">
+                            OkHttp学习（一）
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-10-19T00:00:00+08:00">
+    <time itemprop="datePublished" datetime="2016-10-23T23:47:10+08:00">
 	
-		    10月 19, 2016
+		    10月 23, 2016
     	
     </time>
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/拆轮子系列/">拆轮子系列</a>
+    <a class="category-link" href="/categories/OkHttp学习/">OkHttp学习</a>
 
 
     
@@ -244,54 +244,9 @@
             
                 <div class="postShorten-excerpt" itemprop="articleBody">
                     <a id="more"></a>
-<p>继上一篇文章简单分析了一下<strong><em>Picasso</em></strong>的图片加载流程，这次就接着小小地研究一把图片加载中最为重要的一个部分——缓存机制。当然，这段源码阅读过程自然是以上一篇文章中<a href="https://zpauly.github.io/2016/10/18/Picasso%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="external"><strong><em>Picasso请求加载流程</em></strong></a>为基础的。</p>
+<p>众所周知<strong><em>OkHttp</em></strong>现在已经成为了大多数Java程序猿尤其是Android开发者使用网络通信框架的头号选择，尤其是到了现在的<strong><em>OkHttp3</em></strong>，其功能的强大使得其获得了很多程序员及互联网公司的青睐。但是作为已经学习了Android一年多的人来说，无论是使用还是原理，我实际上还并没有对这套框架有十分彻底的认识，只是在用到的时候大概知道会怎么使用而已。于是从这里开始，我决定花花时间从头好好研究一下这套著名的框架，并把学习过程记录下来。</p>
                     
-                        <a href="/2016/10/19/Picasso源码学习（二）/" class="postShorten-excerpt_link link">
-                            阅读全文
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2016/10/18/Picasso源码学习（一）/">
-                            Picasso源码学习（一）
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-10-18T20:53:34+08:00">
-	
-		    10月 18, 2016
-    	
-    </time>
-    
-        <span>发布在 </span>
-        
-    <a class="category-link" href="/categories/拆轮子系列/">拆轮子系列</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <a id="more"></a>
-<img src="/2016/10/18/Picasso源码学习（一）/picasso_cover.png" alt="picasso_cover.png" title="">
-<p>从这里开始我会开始阅读一款来自于Square的大名鼎鼎的图片处理库<strong><em>Picasso</em></strong>，将这个过程以博客的形式记录下来，一方面是一种学习记录，另一方面也是一种督促啦。</p>
-                    
-                        <a href="/2016/10/18/Picasso源码学习（一）/" class="postShorten-excerpt_link link">
+                        <a href="/2016/10/23/OkHttp学习（一）/" class="postShorten-excerpt_link link">
                             阅读全文
                         </a>
                         
@@ -313,9 +268,10 @@
 </section>
 
 
+
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2017 zpauly. All Rights Reserved.
+        Copyrights &copy; 2016 zpauly. All Rights Reserved.
     </span>
 </footer>
 
@@ -443,17 +399,18 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/">
-                            <h3 class="media-heading">NDK开发学习（一）：尝试JNI</h3>
+                        <a class="link-unstyled" href="http://yoursite.com/2016/10/23/OkHttp学习（一）/">
+                            <h3 class="media-heading">OkHttp学习（一）</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
-                                    2017年2月6日
+                                    2016年10月23日
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><a id="more"></a></div>
+                        <div class="media-content hide-xs font-merryweather"><a id="more"></a>
+<p>众所周知<strong><em>OkHttp</em></strong>现在已经成为了大多数Java程序猿尤其是Android开发者使用网络通信框架的头号选择，尤其是到了现在的<strong><em>OkHttp3</em></strong>，其功能的强大使得其获得了很多程序员及互联网公司的青睐。但是作为已经学习了Android一年多的人来说，无论是使用还是原理，我实际上还并没有对这套框架有十分彻底的认识，只是在用到的时候大概知道会怎么使用而已。于是从这里开始，我决定花花时间从头好好研究一下这套著名的框架，并把学习过程记录下来。</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
