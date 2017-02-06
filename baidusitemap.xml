@@ -4,15 +4,62 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/02/06/NDK%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJNI%E8%A7%84%E5%88%99/</loc>
+    <lastmod>2017-02-06T13:52:53.000Z</lastmod>
+    <data>
+        <display>
+        <title>NDK开发学习（二）：JNI规则</title>
+        <pubTime>2017-02-06T04:20:00.000Z</pubTime>
+        
+        <tag>JNI</tag>
+         
+         
+           
+             
+              <breadCrumb title="NDK开发学习" url="http://yoursite.com/categories/NDK%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/02/06/Android%E6%8F%92%E4%BB%B6%E5%8C%96%E5%85%A5%E9%97%A8%E8%B5%84%E6%96%99/</loc>
+    <lastmod>2017-02-06T13:49:12.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android插件化入门资料</title>
+        <pubTime>2017-02-06T13:33:10.000Z</pubTime>
+        
+        <tag>插件化</tag>
+         
+        <tag>Android Framework</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android插件化" url="http://yoursite.com/categories/Android%E6%8F%92%E4%BB%B6%E5%8C%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/02/06/NDK%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B0%9D%E8%AF%95JNI/</loc>
-    <lastmod>2017-02-06T04:09:49.000Z</lastmod>
+    <lastmod>2017-02-06T05:28:36.000Z</lastmod>
     <data>
         <display>
         <title>NDK开发学习（一）：尝试JNI</title>
         <pubTime>2017-02-06T03:12:30.000Z</pubTime>
         
+        <tag>JNI</tag>
+         
          
            
+             
+              <breadCrumb title="NDK开发学习" url="http://yoursite.com/categories/NDK%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/"/>
+          
         </display>
     </data>
     </url>

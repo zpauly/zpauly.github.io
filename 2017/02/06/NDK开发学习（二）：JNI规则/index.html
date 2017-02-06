@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="zpauly&#39;s blog">
-    <title>分类: 随手写写 - zpauly&#39;s blog</title>
+    <title>NDK开发学习（二）：JNI规则 - zpauly&#39;s blog</title>
     <meta name="author" content="zpauly">
     
     
@@ -16,11 +16,15 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta property="og:type" content="blog">
-<meta property="og:title" content="zpauly's blog">
-<meta property="og:url" content="http://yoursite.com/categories/随手写写/index.html">
+<meta property="og:title" content="NDK开发学习（二）：JNI规则">
+<meta property="og:url" content="http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/index.html">
 <meta property="og:site_name" content="zpauly's blog">
+<meta property="og:image" content="http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/NDK开发学习（二）：JNI规则_1.png">
+<meta property="og:image" content="http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/NDK开发学习（二）：JNI规则_2.png">
+<meta property="og:updated_time" content="2017-02-06T13:52:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zpauly's blog">
+<meta name="twitter:title" content="NDK开发学习（二）：JNI规则">
+<meta name="twitter:image" content="http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/NDK开发学习（二）：JNI规则_1.png">
     
     
         
@@ -49,7 +53,7 @@
         
     
 
-<header id="header" data-behavior="2">
+<header id="header" data-behavior="5">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">zpauly&#39;s blog</a>
@@ -73,7 +77,7 @@
         
     
 
-<nav id="sidebar" data-behavior="2">
+<nav id="sidebar" data-behavior="5">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -206,66 +210,135 @@
 </nav>
 
             
-            <div id="main" data-behavior="2"
+            <div id="main" data-behavior="5"
                  class="
                         hasCoverMetaIn
                         ">
                 
-    <section class="postShorten-group main-content-wrap">
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
     
     
-    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2016/09/28/一个新的开始/">
-                            一个新的开始
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-09-28T00:00:00+08:00">
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            NDK开发学习（二）：JNI规则
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-02-06T12:20:00+08:00">
 	
-		    9月 28, 2016
+		    2月 06, 2017
     	
     </time>
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/随手写写/">随手写写</a>
+    <a class="category-link" href="/categories/NDK开发学习/">NDK开发学习</a>
 
 
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <a id="more"></a>
-<p>从开始学习Android到现在不知不觉有一年出头了，作为学生也总算是到了大三了。但是，一名coder现在才想起来开个自己的博客好像也是稍微有点迟啊（滑稽脸）。虽然不知道未来在这博客里能写多少有意思的东西，但是既然已经开了，那就把它作为一个标志，象征一个新的学习阶段的开始吧。</p>
-                    
-                        <a href="/2016/09/28/一个新的开始/" class="postShorten-excerpt_link link">
-                            阅读全文
-                        </a>
-                        
-                    
-                </div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <!--excerpt-->
+<h5 id="JVM查找native方法"><a href="#JVM查找native方法" class="headerlink" title="JVM查找native方法"></a>JVM查找native方法</h5><p>JVM 查找 native 方法有两种方式：</p>
+<ul>
+<li>按照 JNI 规范的命名规则</li>
+<li>调用 JNI 提供的 RegisterNatives 函数，将本地函数注册到 JVM 中。</li>
+</ul>
+<p>在编译我们所写的c/c++代码成动态库的时候，有两个头文件是需要的<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; jni_md.h</div><div class="line"></div><div class="line">```c++</div><div class="line">#ifndef _JAVASOFT_JNI_MD_H_</div><div class="line">#define _JAVASOFT_JNI_MD_H_</div><div class="line"></div><div class="line">#define JNIEXPORT     __attribute__((visibility(&quot;default&quot;)))</div><div class="line">#define JNIIMPORT     __attribute__((visibility(&quot;default&quot;)))</div><div class="line">#define JNICALL</div><div class="line"></div><div class="line">typedef int jint;</div><div class="line">#ifdef _LP64 /* 64-bit */</div><div class="line">typedef long jlong;</div><div class="line">#else</div><div class="line">typedef long long jlong;</div><div class="line">#endif</div><div class="line"></div><div class="line">typedef signed char jbyte;</div><div class="line">#endif /* !_JAVASOFT_JNI_MD_H_ */</div></pre></td></tr></table></figure></p>
+<p>当然，可以看到在mac平台下<code>JNIEXPORT</code>、<code>JNIIMPORT</code>、<code>JNICALL</code>并没有定义具体内容，是个空定义。</p>
+<p>至于函数的命名规则，在<a href="/2017/02/06/NDK开发学习（一）：尝试JNI/" title="NDK开发学习（一）：尝试JNI">NDK开发学习（一）：尝试JNI</a>中有提到。</p>
+<h5 id="JNI数据类型"><a href="#JNI数据类型" class="headerlink" title="JNI数据类型"></a>JNI数据类型</h5><p>首先是一个非常特殊的类型——<code>JNIEnv*</code>。它是定义任意 native 函数的第一个参数，指向 JVM 函数表的指针，函数表中的每一个入口指向一个 JNI 函数，每个函数用于访问 JVM 中特定的数据结构。</p>
+<p>其余的下面两张图可以概括</p>
+<img src="/2017/02/06/NDK开发学习（二）：JNI规则/NDK开发学习（二）：JNI规则_1.png" alt="NDK开发学习（二）：JNI规则_1.png" title="">
+<img src="/2017/02/06/NDK开发学习（二）：JNI规则/NDK开发学习（二）：JNI规则_2.png" alt="NDK开发学习（二）：JNI规则_2.png" title="">
+<p>值得注意的是JNI中所与Java中的基本数据类型对应的类型的值是可以在程序中直接使用到的，但是引用数据类型则不行。这是由于与基本类型不同，引用类型所传入的是一个指针类型，指向那个对象在JVM内存中的地址。要想从JVM内存中访问到这些数据，就需要通过<code>JNIEnv*</code>来实现。</p>
+<p>##### </p>
             
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/JNI/">JNI</a>
+
+            </div>
         
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/06/Android插件化入门资料/"  data-tooltip="Android插件化入门资料">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/06/NDK开发学习（一）：尝试JNI/" data-tooltip="NDK开发学习（一）：尝试JNI">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
         
-        <li class="pagination-number">第 1 页 共 1 页</li>
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
 
 
 
@@ -276,6 +349,90 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/06/Android插件化入门资料/"  data-tooltip="Android插件化入门资料">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/06/NDK开发学习（一）：尝试JNI/" data-tooltip="NDK开发学习（一）：尝试JNI">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/">
+                <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
             
         </div>
         
@@ -471,6 +628,25 @@
         <!--SCRIPTS-->
 <script src="/assets/js/script-rt08quwts7iav5x0cfd2ym0gb5qkd1lvrsmwrakxtkhefmaaes4ywkmnjnwf.min.js"></script>
 <!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://yoursite.com/2017/02/06/NDK开发学习（二）：JNI规则/';
+                 
+                    this.page.identifier = '2017/02/06/NDK开发学习（二）：JNI规则/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'zpauly';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
 
 
 
