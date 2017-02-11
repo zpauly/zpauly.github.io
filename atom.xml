@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-06T15:17:57.000Z</updated>
+  <updated>2017-02-06T13:52:53.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,43 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Android插件化入门资料</title>
-    <link href="http://yoursite.com/2017/02/06/Android%E6%8F%92%E4%BB%B6%E5%8C%96%E5%85%A5%E9%97%A8%E8%B5%84%E6%96%99/"/>
-    <id>http://yoursite.com/2017/02/06/Android插件化入门资料/</id>
-    <published>2017-02-06T13:33:10.000Z</published>
-    <updated>2017-02-06T15:17:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a>
-<p>最近一直在学习Android Framework层的源码，而插件化自当是我想到的关于这方面的最好实践。但毕竟插件化的难度还是很大的，因此在插件化的入门过程中，自己总是会绕得云里雾里。不过幸运的是我发现了一个系列的文章，可以说是大大提高了我这方面的学习效率。</p>
-<!--excerpt-->
-<p><a href="http://weishu.me/2016/01/28/understand-plugin-framework-proxy-hook/" target="_blank" rel="external">Hook机制之动态代理</a></p>
-<p><a href="http://weishu.me/2016/02/16/understand-plugin-framework-binder-hook/" target="_blank" rel="external">Hook机制之Binder Hook</a></p>
-<p><a href="http://weishu.me/2016/03/07/understand-plugin-framework-ams-pms-hook/" target="_blank" rel="external">Hook机制之AMS&amp;PMS</a></p>
-<p><a href="http://weishu.me/2016/03/21/understand-plugin-framework-activity-management/" target="_blank" rel="external">Activity生命周期管理</a></p>
-<p><a href="http://weishu.me/2016/04/05/understand-plugin-framework-classloader/" target="_blank" rel="external">插件加载机制</a></p>
-<p><a href="http://weishu.me/2016/04/12/understand-plugin-framework-receiver/" target="_blank" rel="external">广播的管理</a></p>
-<p><a href="http://weishu.me/2016/05/11/understand-plugin-framework-service/" target="_blank" rel="external">Service的插件化</a></p>
-<p><a href="http://weishu.me/2016/07/12/understand-plugin-framework-content-provider/" target="_blank" rel="external">ContentProvider的插件化</a></p>
-<p>在这里做个分享，顺便自己也收藏一下，以后要是有什么记不得的也常来看看(ง •̀_•́)ง</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;最近一直在学习Android Framework层的源码，而插件化自当是我想到的关于这方面的最好实践。但毕竟插件化的难度还是很大的，因此在插件化的入门过程中，自己总是会绕得云里雾里。不过幸运的是我发现了一个系列的文章，可以说是大大提高了我
-    
-    </summary>
-    
-      <category term="Android插件化" scheme="http://yoursite.com/categories/Android%E6%8F%92%E4%BB%B6%E5%8C%96/"/>
-    
-    
-      <category term="插件化" scheme="http://yoursite.com/tags/%E6%8F%92%E4%BB%B6%E5%8C%96/"/>
-    
-      <category term="Android Framework" scheme="http://yoursite.com/tags/Android-Framework/"/>
-    
-  </entry>
   
   <entry>
     <title>NDK开发学习（二）：JNI规则</title>
@@ -68,7 +31,7 @@
 </ul>
 <p>在编译我们所写的c/c++代码成动态库的时候，有两个头文件是需要的<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; jni_md.h</div><div class="line"></div><div class="line">```c++</div><div class="line">#ifndef _JAVASOFT_JNI_MD_H_</div><div class="line">#define _JAVASOFT_JNI_MD_H_</div><div class="line"></div><div class="line">#define JNIEXPORT     __attribute__((visibility(&quot;default&quot;)))</div><div class="line">#define JNIIMPORT     __attribute__((visibility(&quot;default&quot;)))</div><div class="line">#define JNICALL</div><div class="line"></div><div class="line">typedef int jint;</div><div class="line">#ifdef _LP64 /* 64-bit */</div><div class="line">typedef long jlong;</div><div class="line">#else</div><div class="line">typedef long long jlong;</div><div class="line">#endif</div><div class="line"></div><div class="line">typedef signed char jbyte;</div><div class="line">#endif /* !_JAVASOFT_JNI_MD_H_ */</div></pre></td></tr></table></figure></p>
 <p>当然，可以看到在mac平台下<code>JNIEXPORT</code>、<code>JNIIMPORT</code>、<code>JNICALL</code>并没有定义具体内容，是个空定义。</p>
-<p>至于函数的命名规则，在<a href="/2017/02/06/NDK开发学习（一）：尝试JNI/" title="NDK开发学习（一）：尝试JNI">NDK开发学习（一）：尝试JNI</a>中有提到。</p>
+<p>至于函数的命名规则，在<a href="/2017/02/03/NDK开发学习（一）：尝试JNI/" title="NDK开发学习（一）：尝试JNI">NDK开发学习（一）：尝试JNI</a>中有提到。</p>
 <h5 id="JNI数据类型"><a href="#JNI数据类型" class="headerlink" title="JNI数据类型"></a>JNI数据类型</h5><p>首先是一个非常特殊的类型——<code>JNIEnv*</code>。它是定义任意 native 函数的第一个参数，指向 JVM 函数表的指针，函数表中的每一个入口指向一个 JNI 函数，每个函数用于访问 JVM 中特定的数据结构。</p>
 <p>其余的下面两张图可以概括</p>
 <img src="/2017/02/06/NDK开发学习（二）：JNI规则/NDK开发学习（二）：JNI规则_1.png" alt="NDK开发学习（二）：JNI规则_1.png" title="">
@@ -94,10 +57,10 @@
   
   <entry>
     <title>NDK开发学习（一）：尝试JNI</title>
-    <link href="http://yoursite.com/2017/02/06/NDK%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B0%9D%E8%AF%95JNI/"/>
-    <id>http://yoursite.com/2017/02/06/NDK开发学习（一）：尝试JNI/</id>
-    <published>2017-02-06T03:12:30.000Z</published>
-    <updated>2017-02-06T05:28:36.000Z</updated>
+    <link href="http://yoursite.com/2017/02/03/NDK%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B0%9D%E8%AF%95JNI/"/>
+    <id>http://yoursite.com/2017/02/03/NDK开发学习（一）：尝试JNI/</id>
+    <published>2017-02-03T03:12:30.000Z</published>
+    <updated>2017-02-08T11:45:48.000Z</updated>
     
     <content type="html"><![CDATA[<a id="more"></a>
 <!--excerpt-->
@@ -131,7 +94,7 @@
 <li>-framework JavaVM -I：编译 JNI 需要用到 JVM 的头文件(<code>jni.h</code>)，第一个目录是平台无关的，第二个目录是与操作系统平台相关的头文件</li>
 </ul>
 <h5 id="六-运行Java程序"><a href="#六-运行Java程序" class="headerlink" title="六.运行Java程序"></a>六.运行Java程序</h5><p>运行效果</p>
-<img src="/2017/02/06/NDK开发学习（一）：尝试JNI/NDK开发学习（一）：尝试JNI_1.png" alt="NDK开发学习（一）：尝试JNI_1.png" title="">
+<img src="/2017/02/03/NDK开发学习（一）：尝试JNI/NDK开发学习（一）：尝试JNI_1.png" alt="NDK开发学习（一）：尝试JNI_1.png" title="">
 ]]></content>
     
     <summary type="html">
@@ -147,6 +110,43 @@
     
     
       <category term="JNI" scheme="http://yoursite.com/tags/JNI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android插件化入门资料</title>
+    <link href="http://yoursite.com/2016/12/25/Android%E6%8F%92%E4%BB%B6%E5%8C%96%E5%85%A5%E9%97%A8%E8%B5%84%E6%96%99/"/>
+    <id>http://yoursite.com/2016/12/25/Android插件化入门资料/</id>
+    <published>2016-12-25T13:33:10.000Z</published>
+    <updated>2017-02-07T09:42:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a>
+<p>最近一直在学习Android Framework层的源码，而插件化自当是我想到的关于这方面的最好实践。但毕竟插件化的难度还是很大的，因此在插件化的入门过程中，自己总是会绕得云里雾里。不过幸运的是我发现了一个系列的文章，可以说是大大提高了我这方面的学习效率。</p>
+<!--excerpt-->
+<p><a href="http://weishu.me/2016/01/28/understand-plugin-framework-proxy-hook/" target="_blank" rel="external">Hook机制之动态代理</a></p>
+<p><a href="http://weishu.me/2016/02/16/understand-plugin-framework-binder-hook/" target="_blank" rel="external">Hook机制之Binder Hook</a></p>
+<p><a href="http://weishu.me/2016/03/07/understand-plugin-framework-ams-pms-hook/" target="_blank" rel="external">Hook机制之AMS&amp;PMS</a></p>
+<p><a href="http://weishu.me/2016/03/21/understand-plugin-framework-activity-management/" target="_blank" rel="external">Activity生命周期管理</a></p>
+<p><a href="http://weishu.me/2016/04/05/understand-plugin-framework-classloader/" target="_blank" rel="external">插件加载机制</a></p>
+<p><a href="http://weishu.me/2016/04/12/understand-plugin-framework-receiver/" target="_blank" rel="external">广播的管理</a></p>
+<p><a href="http://weishu.me/2016/05/11/understand-plugin-framework-service/" target="_blank" rel="external">Service的插件化</a></p>
+<p><a href="http://weishu.me/2016/07/12/understand-plugin-framework-content-provider/" target="_blank" rel="external">ContentProvider的插件化</a></p>
+<p>在这里做个分享，顺便自己也收藏一下，以后要是有什么记不得的也常来看看(ง •̀_•́)ง</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;最近一直在学习Android Framework层的源码，而插件化自当是我想到的关于这方面的最好实践。但毕竟插件化的难度还是很大的，因此在插件化的入门过程中，自己总是会绕得云里雾里。不过幸运的是我发现了一个系列的文章，可以说是大大提高了我
+    
+    </summary>
+    
+      <category term="Android插件化" scheme="http://yoursite.com/categories/Android%E6%8F%92%E4%BB%B6%E5%8C%96/"/>
+    
+    
+      <category term="插件化" scheme="http://yoursite.com/tags/%E6%8F%92%E4%BB%B6%E5%8C%96/"/>
+    
+      <category term="Android Framework" scheme="http://yoursite.com/tags/Android-Framework/"/>
     
   </entry>
   
