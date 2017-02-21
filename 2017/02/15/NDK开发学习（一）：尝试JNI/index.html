@@ -10,7 +10,7 @@
     
     <title>
         
-            关于 | 
+            NDK开发学习（一）：尝试JNI | 
         
         zpauly&#39;s blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="关于 | zpauly&#39;s blog">
+    <meta property="og:title" content="NDK开发学习（一）：尝试JNI | zpauly&#39;s blog">
     <meta property="og:description" content="null">
 
     <!--[if lte IE 9]>
@@ -197,6 +197,41 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JNI开发流程简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">JNI开发流程简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#尝试JNI"><span class="post-toc-number">2.</span> <span class="post-toc-text">尝试JNI</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#一-定义一个native-函数"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">一.定义一个native 函数</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#二-使用将-java文件编译为-class文件"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">二.使用将.java文件编译为.class文件</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#三-根据-class文件生成-h头文件"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">三.根据.class文件生成.h头文件</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#四-实现头文件中的函数"><span class="post-toc-number">2.0.4.</span> <span class="post-toc-text">四.实现头文件中的函数</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#五-将写好的c-c-代码编译为本地动态库"><span class="post-toc-number">2.0.5.</span> <span class="post-toc-text">五.将写好的c/c++代码编译为本地动态库</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#六-运行Java程序"><span class="post-toc-number">2.0.6.</span> <span class="post-toc-text">六.运行Java程序</span></a></li></ol></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
 
 <!-- Layouts -->
 
@@ -222,7 +257,7 @@
         
     
             <p class="article-headline-p">
-                关于
+                NDK开发学习（一）：尝试JNI
             </p>
         </div>
 
@@ -241,7 +276,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>zpauly</strong>
-        <span>2月 09, 2017</span>
+        <span>2月 15, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -265,7 +300,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/JNI/">JNI</a>
     </ul>
     
 
@@ -281,7 +316,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=关于&url=http://yoursite.com//about/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=NDK开发学习（一）：尝试JNI&url=http://yoursite.com//2017/02/15/NDK开发学习（一）：尝试JNI/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -290,7 +325,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=关于&url=http://yoursite.com//about/index.html&via=zpauly" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=NDK开发学习（一）：尝试JNI&url=http://yoursite.com//2017/02/15/NDK开发学习（一）：尝试JNI/index.html&via=zpauly" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -299,7 +334,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//about/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/02/15/NDK开发学习（一）：尝试JNI/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -308,7 +343,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//about/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/02/15/NDK开发学习（一）：尝试JNI/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -317,7 +352,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com//about/index.html&title=关于" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com//2017/02/15/NDK开发学习（一）：尝试JNI/index.html&title=NDK开发学习（一）：尝试JNI" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -326,7 +361,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=zpauly&#39;s blog&title=关于&summary=null&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/about/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=zpauly&#39;s blog&title=NDK开发学习（一）：尝试JNI&summary=null&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/02/15/NDK开发学习（一）：尝试JNI/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -344,86 +379,39 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Material mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="张禹"><a href="#张禹" class="headerlink" title="张禹"></a>张禹</h1><ul>
-<li>性别：男</li>
-<li>年月：1996.07</li>
-<li>教育背景：江西师范大学-本科</li>
-<li>联系方式：13665204594</li>
-<li>现所在地：江西南昌</li>
-<li>E-mail：<a href="mailto:zpauly1996@gmail.com" target="_blank" rel="external">zpauly1996@gmail.com</a></li>
-<li>github：<a href="https://github.com/zpauly" target="_blank" rel="external">https://github.com/zpauly</a></li>
-<li>博客地址：<a href="http://zpauly.me/" target="_blank" rel="external">http://zpauly.me/</a></li>
+        <a id="more"></a>
+<!--excerpt-->
+<p>注：此过程在mac环境下</p>
+<h3 id="JNI开发流程简介"><a href="#JNI开发流程简介" class="headerlink" title="JNI开发流程简介"></a>JNI开发流程简介</h3><ul>
+<li>编写声明了 native 方法的 Java 类</li>
+<li>将 Java 源代码编译成 class 字节码文件</li>
+<li>用 javah -jni 命令生成<code>.h</code>头文件（javah 是 jdk 自带的一个命令，-jni 参数表示将 class 中用native 声明的函数生成 JNI 规则的函数）</li>
+<li>用本地代码实现<code>.h头</code>文件中的函数</li>
+<li>将本地代码编译成动态库（Windows：*.dll，linux/unix：*.so，mac os x：*.jnilib）</li>
+<li>拷贝动态库至 java.library.path 本地库搜索目录下，并运行 Java 程序</li>
 </ul>
-<hr>
-<h2 id="技能描述"><a href="#技能描述" class="headerlink" title="技能描述"></a>技能描述</h2><ul>
-<li>Java方面：理解面向对象编程思想，熟悉Java泛型的使用，容器类的操作，反射以及注解等，了解JVM的内存管理机制包括垃圾收集器和内存分配策略。</li>
-<li>Android方面：熟悉四大组件的使用，熟悉View的绘制过程以及事件分发，熟悉Android的消息处理机制并阅读过实现该机制的三个类(Handler、Looper、MessageQueue)的源码，了解Binder机制并有阅读过其Framework层的源码。</li>
-<li>掌握版本控制工具Git的使用，懂得如何解决团队协作中的代码冲突问题。</li>
-<li>能够熟练阅读英文文档。</li>
-<li>喜爱尝试新技术，并愿意将其运用在项目的实践过程当中。对于不够理解的内容，愿意努力去阅读源码增加自己对其的理解。当出现自己不懂的技术或内容，善于使用Google、StackOverFlow等来解决自己问题，如果还不能懂得如何与同伴交流尝试一起解决问题。</li>
-</ul>
-<hr>
-<h2 id="项目经历"><a href="#项目经历" class="headerlink" title="项目经历"></a>项目经历</h2><h3 id="GitDroid——GitHub的第三方客户端"><a href="#GitDroid——GitHub的第三方客户端" class="headerlink" title="GitDroid——GitHub的第三方客户端"></a>GitDroid——GitHub的第三方客户端</h3><ul>
-<li>项目地址：<a href="https://github.com/zpauly/GitHub_Android" target="_blank" rel="external">https://github.com/zpauly/GitHub_Android</a></li>
-</ul>
+<h3 id="尝试JNI"><a href="#尝试JNI" class="headerlink" title="尝试JNI"></a>尝试JNI</h3><h5 id="一-定义一个native-函数"><a href="#一-定义一个native-函数" class="headerlink" title="一.定义一个native 函数"></a>一.定义一个native 函数</h5><blockquote>
+<p>HelloWorld.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> &#123;</div><div class="line">    <span class="comment">//所需加载的动态库的完整路径	System.load("/Users/zhangyu/Desktop/JavaProjects/LearnJNI/jni/libHelloWorld.jnilib");</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> String <span class="title">sayHello</span><span class="params">(String name)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">        String text = sayHello(<span class="string">"zpauly"</span>);</div><div class="line">        System.out.println(text);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="二-使用将-java文件编译为-class文件"><a href="#二-使用将-java文件编译为-class文件" class="headerlink" title="二.使用将.java文件编译为.class文件"></a>二.使用将.java文件编译为.class文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javac src/HelloWorld.java -d bin</div></pre></td></tr></table></figure>
+<p>这里我使用-d命令将class文件生成到指定目录下</p>
+<h5 id="三-根据-class文件生成-h头文件"><a href="#三-根据-class文件生成-h头文件" class="headerlink" title="三.根据.class文件生成.h头文件"></a>三.根据.class文件生成.h头文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javah -jni -classpath bin -d jni HelloWorld</div></pre></td></tr></table></figure>
+<p>默认生成的头文件的名称为：包名+类名.h，如：若此处HelloWorld的包名为<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">javah -jni命令参数</div><div class="line"></div><div class="line">- classpath：类搜索路径，这里表示从当前的 bin 目录下查找</div><div class="line">- d：将生成的头文件放到当前的 jni 目录下</div><div class="line">- o： 指定生成的头文件名称，默认以类全路径名生成（包名+类名.h）</div><div class="line"></div><div class="line">此时生成的头文件为</div><div class="line"></div><div class="line">&gt; HelloWorld.h</div><div class="line"></div><div class="line">```c++</div><div class="line">/* DO NOT EDIT THIS FILE - it is machine generated */</div><div class="line">#include &lt;jni.h&gt;</div><div class="line">/* Header for class HelloWorld */</div><div class="line"></div><div class="line">#ifndef _Included_HelloWorld</div><div class="line">#define _Included_HelloWorld</div><div class="line">#ifdef __cplusplus</div><div class="line">extern &quot;C&quot; &#123;</div><div class="line">#endif</div><div class="line">/*</div><div class="line"> * Class:     HelloWorld</div><div class="line"> * Method:    sayHello</div><div class="line"> * Signature: (Ljava/lang/String;)Ljava/lang/String;</div><div class="line"> */</div><div class="line">JNIEXPORT jstring JNICALL Java_HelloWorld_sayHello</div><div class="line">  (JNIEnv *, jclass, jstring);</div><div class="line"></div><div class="line">#ifdef __cplusplus</div><div class="line">&#125;</div><div class="line">#endif</div><div class="line">#endif</div></pre></td></tr></table></figure></p>
+<h5 id="四-实现头文件中的函数"><a href="#四-实现头文件中的函数" class="headerlink" title="四.实现头文件中的函数"></a>四.实现头文件中的函数</h5><blockquote>
+<p>HelloWorld.c</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"HelloWorld.h"</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></div><div class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * Class:     HelloWorld</div><div class="line"> * Method:    sayHello</div><div class="line"> * Signature: (Ljava/lang/String;)Ljava/lang/String;</div><div class="line"> */</div><div class="line"><span class="function">JNIEXPORT jstring JNICALL <span class="title">Java_HelloWorld_sayHello</span><span class="params">(JNIEnv *env, jclass clazz, jstring j_str)</span> </span>&#123;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *c_str = <span class="literal">NULL</span>;</div><div class="line">    <span class="keyword">char</span> buff[<span class="number">128</span>] = &#123; <span class="number">0</span> &#125;;</div><div class="line">    c_str = (*env)-&gt;GetStringUTFChars(env, j_str, <span class="literal">NULL</span>);</div><div class="line">    <span class="keyword">if</span> (c_str == <span class="literal">NULL</span>) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"out of memory.\n"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">    &#125;</div><div class="line">    (*env)-&gt;ReleaseStringUTFChars(env, j_str, c_str);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"Java String:%s\n"</span>, c_str);</div><div class="line">    <span class="built_in">sprintf</span>(buff, <span class="string">"hello %s\n"</span>, c_str);</div><div class="line">    <span class="keyword">return</span> (*env)-&gt;NewStringUTF(env, buff);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></div><div class="line">&#125;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
+<h5 id="五-将写好的c-c-代码编译为本地动态库"><a href="#五-将写好的c-c-代码编译为本地动态库" class="headerlink" title="五.将写好的c/c++代码编译为本地动态库"></a>五.将写好的c/c++代码编译为本地动态库</h5><p>动态库命名规则：lib+动态库文件名+后缀</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc -dynamiclib -o jni/libHelloWorld.jnilib jni/HelloWorld.c -framework JavaVM -I/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/include/darwin</div></pre></td></tr></table></figure>
+<p>参数说明：</p>
 <ul>
-<li><p>介绍：一个GitHub的Android第三方客户端，在移动端实现了我们平时在GitHub上会常用到的功能。</p>
-</li>
-<li><p>职责：全部单独完成。</p>
-</li>
-<li><p>技术要点:</p>
-<ul>
-<li>外观上使用了Material Design风格，使客户端看上去大方美观。</li>
-<li>项目构建方面使用了MVP模式，减轻了Activity的压力，减轻了代码之间的耦合性。</li>
-<li>灵活运用第三方库来实现所需的效果。</li>
-<li>使用ButterKnife来处理View的绑定，使用Glide库来加载所需展示的图片，使用Retrofit库与Gson库来实现与后端的Restful式的通信方式，使用RxJava来最简洁地处理异步操作。</li>
-<li>在显示Readme内容方面，使用了ImageGetter实现在一个TextView中便可以展示Readme的效果。</li>
-<li>大部分功能都是通过接入GitHub提供的API来实现，但是有API未提供的部分如Trending是通过抓取网页的Html代码并解析来实现的。</li>
+<li>-dynamiclib：表示编译成动态链接库</li>
+<li>-o：指定动态链接库编译后生成的路径及文件名</li>
+<li>-framework JavaVM -I：编译 JNI 需要用到 JVM 的头文件(<code>jni.h</code>)，第一个目录是平台无关的，第二个目录是与操作系统平台相关的头文件</li>
 </ul>
-</li>
-</ul>
-<h3 id="JxnoGo——淘二手-目前后端同学暂停维护"><a href="#JxnoGo——淘二手-目前后端同学暂停维护" class="headerlink" title="JxnoGo——淘二手(目前后端同学暂停维护)"></a>JxnoGo——淘二手(目前后端同学暂停维护)</h3><ul>
-<li><p>项目地址：<a href="https://github.com/zpauly/jxnugo-Android" target="_blank" rel="external">https://github.com/zpauly/jxnugo-Android</a></p>
-</li>
-<li><p>介绍：淘二手客户端的设计目的是为了方便校内闲置物品交易的一个平台，有web端和移动端。</p>
-</li>
-<li><p>职责：全部单独完成。</p>
-</li>
-<li><p>技术要点：</p>
-<ul>
-<li>外观上使用了Material Design风格，使客户端看上去大方美观</li>
-</ul>
-<ul>
-<li>项目构建方面使用了MVP模式，减轻了Activity的压力，减轻了代码之间的耦合性。</li>
-<li>灵活运用第三方库来实现所需的效果。</li>
-<li>使用ButterKnife来处理View的绑定，使用Glide库来加载所需展示的图片，使用Retrofit库与Gson库来实现与后端的Restful式的通信方式，使用RxJava来最简洁地处理异步操作。</li>
-<li>自定义View解决了需要纵向滑动View中有一个需要横向滑动View的滑动冲突。</li>
-</ul>
-</li>
-</ul>
-<h3 id="师大-——校园资讯客户端"><a href="#师大-——校园资讯客户端" class="headerlink" title="师大+——校园资讯客户端"></a>师大+——校园资讯客户端</h3><ul>
-<li>项目地址：<a href="https://github.com/MummyDing/Awesome-Campus" target="_blank" rel="external">https://github.com/MummyDing/Awesome-Campus</a></li>
-<li>介绍：江西师范大学校园资讯客户端。</li>
-<li>职责：后期维护及后期新功能包括兼职信息等功能的添加。</li>
-<li>技术要点：<ul>
-<li>由于没有学校提供相关API，所以只能通过模拟登陆的方式抓取学校教务网的信息来展现在移动端上。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
-<li>连续两年获得校年度综合素质奖学金</li>
-<li>大二上学期获得江西省服务外包创新创业挑战赛二等奖</li>
-<li>大二下学期获得江西省计算机作品大赛一等奖</li>
-</ul>
-<hr>
-<h2 id="自我评价"><a href="#自我评价" class="headerlink" title="自我评价"></a>自我评价</h2><ul>
-<li>有良好的学习能力，做事积极主动。</li>
-<li>有良好的团队意识，可以配合组内同事开发产品。</li>
-<li>具备良好的分析解决问题能力，能不断学习，提升自己。</li>
-<li>遇到技术难题肯花时间解决。能吃苦，能担起重任。</li>
-<li>性格友善，易于相处。</li>
-</ul>
+<h5 id="六-运行Java程序"><a href="#六-运行Java程序" class="headerlink" title="六.运行Java程序"></a>六.运行Java程序</h5><p>运行效果</p>
+<img src="/2017/02/15/NDK开发学习（一）：尝试JNI/NDK开发学习（一）：尝试JNI_1.png" alt="NDK开发学习（一）：尝试JNI_1.png" title="">
 
     
 
@@ -445,7 +433,7 @@
     $('html').ready(function() {
         setTimeout(function() {
             var disqus_config = function () {
-                this.page.url = 'http://yoursite.com/about/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.url = 'http://yoursite.com/2017/02/15/NDK开发学习（一）：尝试JNI/index.html';  // Replace PAGE_URL with your page's canonical URL variable
                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
 
@@ -476,11 +464,27 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
+        <a href="/2017/02/16/NDK开发学习（二）：JNI规则/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/2016/12/25/Android插件化入门资料/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 
@@ -672,6 +676,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 

@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.2.6 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            带你看Glide源码 | 
+        
+        zpauly&#39;s blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="zpauly">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="zpauly&#39;s blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="带你看Glide源码 | zpauly&#39;s blog">
+    <meta property="og:description" content="null">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+    body, html {
+        font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
+
+    a {
+        color: #00838F;
+    }
+
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important;
+    }
+
+    /* Sidebar User Drop Down Menu Text Color */
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+        color: #0097A7 !important;
+    }
+
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+        color: #0097A7 !important;
+    }
+
+    .toTop {
+        background: #757575 !important;
+    }
+
+    .material-layout .material-post>.material-nav,
+    .material-layout .material-index>.material-nav,
+    .material-nav a {
+        color: #757575;
+    }
+
+    #scheme-Paradox .MD-burger-layer {
+        background-color: #757575;
+    }
+
+    #scheme-Paradox #post-toc-trigger-btn {
+        color: #757575;
+    }
+
+    .post-toc a:hover {
+        color: #00838F;
+        text-decoration: underline;
+    }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-image: url(/img/cover1.jpg);
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+
+    <script src="/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/css/highlight/darkula.css">
+
+    <!-- UC Browser Compatible-->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write('<link rel="stylesheet" href="/css/uc.css">');
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                带你看Glide源码
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>zpauly</strong>
+        <span>12月 21, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Glide/">Glide</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/源码/">源码</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=带你看Glide源码&url=http://yoursite.com//2016/12/21/带你看Glide源码/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=带你看Glide源码&url=http://yoursite.com//2016/12/21/带你看Glide源码/index.html&via=zpauly" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2016/12/21/带你看Glide源码/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2016/12/21/带你看Glide源码/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com//2016/12/21/带你看Glide源码/index.html&title=带你看Glide源码" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=zpauly&#39;s blog&title=带你看Glide源码&summary=null&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2016/12/21/带你看Glide源码/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Material mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>随着Android开发的愈渐火热，各种Android的图片加载库也曾出不穷，比较有名的有：<strong>Fresco</strong>、<strong>Picasso</strong>、<strong>Universal Image Loader</strong>等等。在这篇文章中，我会通过源码来简单地分析一下<strong>Glide</strong>使用时所发生的事情。</p>
+<p>###使用方法<br>对于<strong>Glide</strong>的使用方法不是本文的重点，在这里就不多说了，这里贴出<strong>Glide</strong>的Github<a href="https://github.com/bumptech/glide" target="_blank" rel="external">地址</a>，如果对使用方法有什么疑问的就上官方去看看吧。这里我们从Glide最简单的三行使用方法入手进行分析：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Glide.with(...)</div><div class="line">        .load(...)</div><div class="line">        .into(...);</div></pre></td></tr></table></figure></p>
+<p>###流程分析<br>首先我们进入<strong>Glide</strong>类看看<strong>with()</strong>方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RequestManager <span class="title">with</span><span class="params">(Context context)</span> </span>&#123;   </div><div class="line">    RequestManagerRetriever retriever = RequestManagerRetriever.get(); </div><div class="line">    <span class="keyword">return</span> retriever.get(context);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们可以看到<strong>with()</strong>方法是<strong>Glide</strong>类中的一个静态方法，它会创建一个<strong>RequestManagerRetriever</strong>对象，在这里我们先不看这个类在创建过程中发生的事情，先看看它通过传入的<strong>Context</strong>对象所返回的这个<strong>RequestManager</strong>对象。</p>
+<p>对于<strong>RequestManager</strong>这个类，官方文档是这样描述的：<br><em>A class for managing and starting requests for Glide. Can use activity, fragment and connectivity lifecycle events to intelligently stop, start, and restart requests. Retrieve either by instantiating a new object, or to take advantage built in Activity and Fragment lifecycle handling, use the static Glide.load methods with your Fragment or Activity.</em><br>本人英文一般，就不逐字逐句地翻译了。总之，对于<strong>RequestManager</strong>这个类的定位就是对图片加载请求进行管理的类，并且它会根据与其产生联系的<strong>Context</strong>对象的生命周期来管理图片加载的过程。因此，图片资源加载进<strong>ImageView</strong>的过程事实上是由它来一手掌管的。</p>
+<p>知道了这些，我们接下来来看看它的<strong>load()</strong>方法，也就是我们将资源路径传入的这个方法，这里我们以传入一个<strong>Uri</strong>为例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> DrawableTypeRequest&lt;Uri&gt; <span class="title">load</span><span class="params">(Uri uri)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> (DrawableTypeRequest&lt;Uri&gt;) fromUri().load(uri);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在这个方法中使用了<strong>DrawableTypeRequest</strong>中的<strong>load()</strong>方法去加载这个uri：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> DrawableRequestBuilder&lt;ModelType&gt; <span class="title">load</span><span class="params">(ModelType model)</span> </span>&#123;    </div><div class="line">    <span class="keyword">super</span>.load(model);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个方法的泛型参数<strong>ModelType</strong>在这里所对应的实际类型就是我们传入的资源类型<strong>Uri</strong>，并且调用了<strong>DrawableRequestBuilder</strong>的父类方法<strong>load()</strong>来处理。</p>
+<p><strong>GenericRequestBuilder</strong>就是<strong>DrawableRequestBuilder</strong>的父类，这个类及其子类的作用就是用于请求加载的。我们来看看里面刚刚提到的<strong>load()</strong>方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> GenericRequestBuilder&lt;ModelType, DataType, ResourceType, TranscodeType&gt; <span class="title">load</span><span class="params">(ModelType model)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.model = model;</div><div class="line">    isModelSet = <span class="keyword">true</span>;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里我们发现，<strong>load()</strong>方法仅仅是将资源——这里就是我们的图片资源Uri赋值给了一个变量<strong>model</strong>，至于图片资源究竟是怎么加载进<strong>ImageView</strong>的，我们回到这里实际进行加载请求的类<strong>DrawableRequestBuilder</strong>去看看它当中被我们最后调用的<strong>into()</strong>方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Target&lt;GlideDrawable&gt; <span class="title">into</span><span class="params">(ImageView view)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.into(view);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>和<strong>load()</strong>方法相同，这里也调用了父类<strong>GenericRequestBuilder</strong>的<strong>into()</strong>方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Target&lt;TranscodeType&gt; <span class="title">into</span><span class="params">(ImageView view)</span> </span>&#123;</div><div class="line">    ......</div><div class="line">    <span class="keyword">return</span> into(glide.buildImageViewTarget(view, transcodeClass));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对于这个方法我们只看最后一句代码。在这里又再次回到一开始的<strong>Glide</strong>，并调用了其中的<strong>buildImageViewTarget()</strong>方法，而在这个方法中传入了一个<strong>GlideDrawable</strong>对象<strong>transcodedClass</strong>：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;R&gt; <span class="function">Target&lt;R&gt; <span class="title">buildImageViewTarget</span><span class="params">(ImageView imageView, Class&lt;R&gt; transcodedClass)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> imageViewTargetFactory.buildTarget(imageView, transcodedClass);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们继续跟踪下去：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> &lt;Z&gt; <span class="function">Target&lt;Z&gt; <span class="title">buildTarget</span><span class="params">(ImageView view, Class&lt;Z&gt; clazz)</span> </span>&#123;    </div><div class="line">    <span class="keyword">if</span> (GlideDrawable.class.isAssignableFrom(clazz)) &#123;</div><div class="line">        <span class="keyword">return</span> (Target&lt;Z&gt;) <span class="keyword">new</span> GlideDrawableImageViewTarget(view);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (Bitmap.class.equals(clazz)) &#123;</div><div class="line">        <span class="keyword">return</span> (Target&lt;Z&gt;) <span class="keyword">new</span> BitmapImageViewTarget(view);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (Drawable.class.isAssignableFrom(clazz)) &#123;</div><div class="line">        <span class="keyword">return</span> (Target&lt;Z&gt;) <span class="keyword">new</span> DrawableImageViewTarget(view);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Unhandled class: "</span> + clazz                + <span class="string">", try .as*(Class).transcode(ResourceTranscoder)"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>经过反复地辗转我们终于发现了上面我们传入<strong>into()</strong>方法中的是一个和我们所要将图片加载进的<strong>ImageView</strong>相关的<strong>GlideDrawableImageViewTarget</strong>对象。我们先记住这一点，不继续深究下去，先回头看看那个<strong>GenericRequestBuilder</strong>中的<strong>into()</strong>方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> &lt;Y extends Target&lt;TranscodeType&gt;&gt; <span class="function">Y <span class="title">into</span><span class="params">(Y target)</span> </span>&#123;</div><div class="line">    ......</div><div class="line">    Request request = buildRequest(target);</div><div class="line">    target.setRequest(request);</div><div class="line">    ......</div><div class="line">    requestTracker.runRequest(request);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> target;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这段代码所做的事情根据方法名很容易就能猜到，它先根据传入的一个<strong>Target</strong>对象创建一个<strong>Request</strong>，并将两者建立关联，最后执行加载请求。</p>
+<p>这里我们反过来会发现，这个<strong>Target</strong>的实际对象就是我们刚刚所说的那个<strong>GlideDrawable</strong>，另外谈到请求，是不是想到我们前面<strong>load()</strong>进去的那个<strong>Uri</strong>对象了呢？一阵云里雾里，整个内容终于联系了起来，那么我们就先来看看这个<strong>Request</strong>对象究竟是怎么创建的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> Request <span class="title">buildRequest</span><span class="params">(Target&lt;TranscodeType&gt; target)</span> </span>&#123;</div><div class="line">    ......</div><div class="line">    <span class="keyword">return</span> buildRequestRecursive(target, <span class="keyword">null</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里又将那个<strong>Target</strong>对象传进一个<strong>buildRequestRecursive()</strong>方法中：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> Request <span class="title">buildRequestRecursive</span><span class="params">(Target&lt;TranscodeType&gt; target, ThumbnailRequestCoordinator parentCoordinator)</span> </span>&#123;</div><div class="line">    ......</div><div class="line">    <span class="keyword">return</span> obtainRequest(target, sizeMultiplier, priority, parentCoordinator);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对于这个方法，我们重点来关注一下其中的一行代码，其中涉及了<strong>obtainRequest()</strong>方法，这个方法有四个参数，其中最重要的就是第一个，这里将刚刚的<strong>Target</strong>对象给传了进去，我们接下来看一下这个方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> Request <span class="title">obtainRequest</span><span class="params">(Target&lt;TranscodeType&gt; target,</span></span></div><div class="line">        <span class="keyword">float</span> sizeMultiplier, Priority priority,</div><div class="line">        RequestCoordinator requestCoordinator) &#123;</div><div class="line">    <span class="keyword">return</span> GenericRequest.obtain(</div><div class="line">            loadProvider,</div><div class="line">            model,</div><div class="line">            signature,</div><div class="line">            context,</div><div class="line">            priority,</div><div class="line">            target,</div><div class="line">            sizeMultiplier,</div><div class="line">            placeholderDrawable,</div><div class="line">            placeholderId,</div><div class="line">            errorPlaceholder,</div><div class="line">            errorId,</div><div class="line">            fallbackDrawable,</div><div class="line">            fallbackResource,</div><div class="line">            requestListener,</div><div class="line">            requestCoordinator,</div><div class="line">            glide.getEngine(),</div><div class="line">            transformation,</div><div class="line">            transcodeClass,</div><div class="line">            isCacheable,</div><div class="line">            animationFactory,</div><div class="line">            overrideWidth,</div><div class="line">            overrideHeight,</div><div class="line">            diskCacheStrategy);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个方法中只做了一件事，调用了<strong>GenericRequest</strong>类的静态方法<strong>obtain()</strong>，并且传入了很多的参数，这里注意其中的参数<strong>target</strong>，即上面的<strong>GlideDrawableImageViewTarget</strong>对象，另外还有就是这里执行了<strong>Glide</strong>中的<strong>getEngine()</strong>方法，还有资源模型<strong>model</strong>。然后继续往下看：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;A, T, Z, R&gt; <span class="function">GenericRequest&lt;A, T, Z, R&gt; <span class="title">obtain</span><span class="params">(</span></span></div><div class="line">        LoadProvider&lt;A, T, Z, R&gt; loadProvider,</div><div class="line">        A model,</div><div class="line">        Key signature,</div><div class="line">        Context context,</div><div class="line">        Priority priority,</div><div class="line">        Target&lt;R&gt; target,</div><div class="line">        <span class="keyword">float</span> sizeMultiplier,</div><div class="line">        Drawable placeholderDrawable,</div><div class="line">        <span class="keyword">int</span> placeholderResourceId,</div><div class="line">        Drawable errorDrawable,</div><div class="line">        <span class="keyword">int</span> errorResourceId,</div><div class="line">        Drawable fallbackDrawable,</div><div class="line">        <span class="keyword">int</span> fallbackResourceId,</div><div class="line">        RequestListener&lt;? <span class="keyword">super</span> A, R&gt; requestListener,</div><div class="line">        RequestCoordinator requestCoordinator,</div><div class="line">        Engine engine,</div><div class="line">        Transformation&lt;Z&gt; transformation,</div><div class="line">        Class&lt;R&gt; transcodeClass,</div><div class="line">        <span class="keyword">boolean</span> isMemoryCacheable,</div><div class="line">        GlideAnimationFactory&lt;R&gt; animationFactory,</div><div class="line">        <span class="keyword">int</span> overrideWidth,</div><div class="line">        <span class="keyword">int</span> overrideHeight,</div><div class="line">        DiskCacheStrategy diskCacheStrategy) &#123;</div><div class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</div><div class="line">    GenericRequest&lt;A, T, Z, R&gt; request = (GenericRequest&lt;A, T, Z, R&gt;) REQUEST_POOL.poll();</div><div class="line">    <span class="keyword">if</span> (request == <span class="keyword">null</span>) &#123;</div><div class="line">        request = <span class="keyword">new</span> GenericRequest&lt;A, T, Z, R&gt;();</div><div class="line">    &#125;</div><div class="line">    request.init(loadProvider,</div><div class="line">            model,</div><div class="line">            signature,</div><div class="line">            context,</div><div class="line">            priority,</div><div class="line">            target,</div><div class="line">            sizeMultiplier,</div><div class="line">            placeholderDrawable,</div><div class="line">            placeholderResourceId,</div><div class="line">            errorDrawable,</div><div class="line">            errorResourceId,</div><div class="line">            fallbackDrawable,</div><div class="line">            fallbackResourceId,</div><div class="line">            requestListener,</div><div class="line">            requestCoordinator,</div><div class="line">            engine,</div><div class="line">            transformation,</div><div class="line">            transcodeClass,</div><div class="line">            isMemoryCacheable,</div><div class="line">            animationFactory,</div><div class="line">            overrideWidth,</div><div class="line">            overrideHeight,</div><div class="line">            diskCacheStrategy);</div><div class="line">    <span class="keyword">return</span> request;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这一段看上去有点长，但是其实也只涉及到了一个方法<strong>init()</strong>，这个方法同样接受了很多参数，并且在这个方法中，做的也只有一件事，就是将这些传入的参数一一赋值给<strong>GenericRequest</strong>的成员变量：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(</span></span></div><div class="line">        LoadProvider&lt;A, T, Z, R&gt; loadProvider,</div><div class="line">        A model,</div><div class="line">        Key signature,</div><div class="line">        Context context,</div><div class="line">        Priority priority,</div><div class="line">        Target&lt;R&gt; target,</div><div class="line">        <span class="keyword">float</span> sizeMultiplier,</div><div class="line">        Drawable placeholderDrawable,</div><div class="line">        <span class="keyword">int</span> placeholderResourceId,</div><div class="line">        Drawable errorDrawable,</div><div class="line">        <span class="keyword">int</span> errorResourceId,</div><div class="line">        Drawable fallbackDrawable,</div><div class="line">        <span class="keyword">int</span> fallbackResourceId,</div><div class="line">        RequestListener&lt;? <span class="keyword">super</span> A, R&gt; requestListener,</div><div class="line">        RequestCoordinator requestCoordinator,</div><div class="line">        Engine engine,</div><div class="line">        Transformation&lt;Z&gt; transformation,</div><div class="line">        Class&lt;R&gt; transcodeClass,</div><div class="line">        <span class="keyword">boolean</span> isMemoryCacheable,</div><div class="line">        GlideAnimationFactory&lt;R&gt; animationFactory,</div><div class="line">        <span class="keyword">int</span> overrideWidth,</div><div class="line">        <span class="keyword">int</span> overrideHeight,</div><div class="line">        DiskCacheStrategy diskCacheStrategy) &#123;</div><div class="line">    <span class="keyword">this</span>.loadProvider = loadProvider;</div><div class="line">    <span class="keyword">this</span>.model = model;</div><div class="line">    <span class="keyword">this</span>.signature = signature;</div><div class="line">    <span class="keyword">this</span>.fallbackDrawable = fallbackDrawable;</div><div class="line">    <span class="keyword">this</span>.fallbackResourceId = fallbackResourceId;</div><div class="line">    <span class="keyword">this</span>.context = context.getApplicationContext();</div><div class="line">    <span class="keyword">this</span>.priority = priority;</div><div class="line">    <span class="keyword">this</span>.target = target;</div><div class="line">    <span class="keyword">this</span>.sizeMultiplier = sizeMultiplier;</div><div class="line">    <span class="keyword">this</span>.placeholderDrawable = placeholderDrawable;</div><div class="line">    <span class="keyword">this</span>.placeholderResourceId = placeholderResourceId;</div><div class="line">    <span class="keyword">this</span>.errorDrawable = errorDrawable;</div><div class="line">    <span class="keyword">this</span>.errorResourceId = errorResourceId;</div><div class="line">    <span class="keyword">this</span>.requestListener = requestListener;</div><div class="line">    <span class="keyword">this</span>.requestCoordinator = requestCoordinator;</div><div class="line">    <span class="keyword">this</span>.engine = engine;</div><div class="line">    <span class="keyword">this</span>.transformation = transformation;</div><div class="line">    <span class="keyword">this</span>.transcodeClass = transcodeClass;</div><div class="line">    <span class="keyword">this</span>.isMemoryCacheable = isMemoryCacheable;</div><div class="line">    <span class="keyword">this</span>.animationFactory = animationFactory;</div><div class="line">    <span class="keyword">this</span>.overrideWidth = overrideWidth;</div><div class="line">    <span class="keyword">this</span>.overrideHeight = overrideHeight;</div><div class="line">    <span class="keyword">this</span>.diskCacheStrategy = diskCacheStrategy;</div><div class="line">    status = Status.PENDING;</div><div class="line">    ......</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>到这里对于加载请求的设置几本完成，我们再回去看看那句运行加载的代码<strong>requestTracker.runRequest(request);</strong>所做的具体的事情：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">runRequest</span><span class="params">(Request request)</span> </span>&#123;</div><div class="line">    ......</div><div class="line">    <span class="keyword">if</span> (!isPaused) &#123;</div><div class="line">        request.begin();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        ......</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里调用了刚刚设置好的<strong>Request</strong>对象的<strong>begin()</strong>方法，而这里的<strong>Request</strong>对象的实际类型就是上面我们所看到的<strong>GenericRequest</strong>对象。于是，我们来看看它的<strong>begin()</strong>方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">begin</span><span class="params">()</span> </span>&#123;</div><div class="line">    ......</div><div class="line">    <span class="keyword">if</span> (!isComplete() &amp;&amp; !isFailed() &amp;&amp; canNotifyStatusChanged()) &#123;</div><div class="line">          target.onLoadStarted(getPlaceholderDrawable());</div><div class="line">    &#125;</div><div class="line">    ......</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里我们需要关注的就是一个<strong>Target</strong>对象的<strong>onLoadStarted()</strong>方法，在这里我们记起这个<strong>Target</strong>对象的实际类型就是上面的<strong>init()</strong>方法中所设置的<strong>GlideDrawableImageViewTarget</strong>对象。也许你会认为这个<strong>begin()</strong>方法就是资源加载进<strong>ImageView</strong>的关键，但是当我们点进去查看它的<strong>begin()</strong>方法时却发现并不如我们所想，它只是为我们的<strong>ImageView</strong>设置了一个占位图，并没有做其他的事情。但是我们在查看<strong>GlideDrawableImageViewTarget</strong>的源码的时候，我们发现了这么一个方法<strong>onResourceReady()</strong>，在这个方法中有这么一句代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setResource(resource);</div></pre></td></tr></table></figure></p>
+<p>接着看看<strong>setResource()</strong>：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setResource</span><span class="params">(GlideDrawable resource)</span> </span>&#123;</div><div class="line">    view.setImageDrawable(resource);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里的resource我们猜应该就是图片资源了，也会是说这里所做的事情就是最后将图片呈现在<strong>ImageView</strong>上，但程序究竟是怎么到这里的呢，我们想到了上面的<strong>getEngine()</strong>方法，于是我们来看看这里所做的事情：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function">Engine <span class="title">getEngine</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> engine;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个<strong>Engine</strong>又是一个非常重要的类，我们来看看这个类的官方介绍：<br><em>Responsible for starting loads and managing active and cached resources.</em><br>我们发现这个类就是真正用来管理加载的类。但是这个不是我这篇文章的重点，关于它所作的事情我会在后面的文章中对它进行简析。既然这个<strong>Engine</strong>对象是用来加载资源的，那么我们就想到了一开始的那个上面另外一个要记住的<strong>model</strong>，看看它们是怎么运用的。要想知道这到底是怎么使用的，我在这里贴出最重要的一段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">onLoadComplete</span><span class="params">(Resource resource)</span> </span>&#123;</div><div class="line">      manager.onResourceReady(resource);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个方法是<strong>EngineRunnable</strong>类中的，这个类从名字就可以看出来它的作用就是响应<strong>Engine</strong>的。而这里的<strong>onResourceReady()</strong>则是触发了<strong>GenericRequest</strong>中的一个回调<strong>onResourceReady()</strong>：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResourceReady</span><span class="params">(Resource&lt;?&gt; resource)</span> </span>&#123;</div><div class="line">    ......</div><div class="line">    onResourceReady(resource, (R) received);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里又调用了该类中的一个重载方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">onResourceReady</span><span class="params">(Resource&lt;?&gt; resource, R result)</span> </span>&#123;</div><div class="line">    ......</div><div class="line">    <span class="keyword">if</span> (requestListener == <span class="keyword">null</span> || !requestListener.onResourceReady(result, model, target, loadedFromMemoryCache,</div><div class="line">        isFirstResource)) &#123;</div><div class="line">        ......</div><div class="line">    &#125;</div><div class="line">    notifyLoadSuccess();</div><div class="line">    ......</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里我们看到了，这个方法使用到了<strong>model</strong>，而这个方法则属于一个<strong>RequestListener</strong>回调接口，这个回调接口究竟会在哪里被调用呢，其实就是我们上面提到的<strong>GlideDrawableImageViewTarget</strong>的<strong>onResourceReady()</strong>，而在这个方法中，另一个参数<strong>target</strong>在这里的实际类型就是<strong>GlideDrawableImageViewTarget</strong>。到这里我们终于是弄明白整个图片资源的加载过程了。</p>
+<p>至此Glide加载图片的调用链大致是搞明白了，里面涉及了大量的设计模式，因此十分复杂，但是原理很简单易懂，理清楚之后便十分清晰明了。</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    $('html').ready(function() {
+        setTimeout(function() {
+            var disqus_config = function () {
+                this.page.url = 'http://yoursite.com/2016/12/21/带你看Glide源码/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//null.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        },1500);
+    });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2016/12/25/Android插件化入门资料/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/10/19/Picasso源码学习（二）/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpg" alt="zpauly's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        mailto:zpauly1996@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:zpauly1996@gmail.com" target="_blank" title="Email Me">
+                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+            主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+    <!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+    -->
+
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">1</span></a>
+        </ul>
+    </li>
+
+    <!-- Categories  -->
+    
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+  	
+        <li>
+            <a href="tags" title="标签">
+                
+                标签
+            </a>
+        </li>
+  	
+        <li>
+            <a href="links" title="友情链接">
+                
+                友情链接
+            </a>
+        </li>
+  	
+        <li>
+            <a href="/about/" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+  	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+            文章总数
+            <span class="sidebar-badge">7</span>
+        </a>
+    </li>
+</ul>
+
+
+        <!-- Sidebar Divider -->
+        <div class="sidebar-divider"></div>
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        主题 - Material
+        <span class="sidebar-badge badge-circle">i</span>
+    </div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+    sidebar.help
+    <span class="mdl-button__ripple-container">
+      <span class="mdl-ripple"></span>
+    </span>
+  </div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+    </div>
+
+    <!-- Sidebar Sponsor -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+        <a href="https://plus.google.com/105895756519745467328" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/5717069445/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/zpauly" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/zhang-yu-9-96-30/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;zpauly's blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//null.disqus.com/count.js" async></script>
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+    <script>
+    var searchFunc = function(path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: 'xml',
+            success: function( xmlResponse ) {
+                // get the contents from search data
+                var datas = $( 'entry', xmlResponse ).map(function() {
+                    return {
+                        title: $( 'title', this ).text(),
+                        content: $('content',this).text(),
+                        url: $( 'url' , this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function() {
+                    var str='<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function(data) {
+                        var isMatch = true;
+                        var content_index = [];
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                        var data_url = data.url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if(data_title != '' && data_content != '') {
+                            keywords.forEach(function(keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if( index_title < 0 && index_content < 0 ) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += '<li><a href="'+ data_url +'" class="search-result-title" target="_blank">'+ data_title;
+                            var content = data.content.trim().replace(/<[^>]+>/g, '');
+                            if (first_occur >= 0) {
+                                // cut out characters
+                                var start = first_occur - 6;
+                                var end = first_occur + 6;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 10;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, 'gi');
+                                    match_content = match_content.replace(regS, '<em class="search-keyword">'+keyword+'</em>');
+                                })
+                                str += '<p class="search-result">' + match_content +'...</p>' +'</a>';
+                            }
+                        }
+                    });
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    }
+</script>
+
+
+    <script>
+        var inputArea = document.querySelector('#search');
+        var getSearchFile = function() {
+            var path = 'search.xml';
+            searchFunc(path, 'search', 'local-search-result');
+        }
+
+        if(inputArea) {
+            inputArea.onfocus = function() {
+                getSearchFile();
+            }
+        }
+    </script>
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>

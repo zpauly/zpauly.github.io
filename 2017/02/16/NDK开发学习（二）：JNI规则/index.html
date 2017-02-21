@@ -10,7 +10,7 @@
     
     <title>
         
-            标签: Picasso | 
+            NDK开发学习（二）：JNI规则 | 
         
         zpauly&#39;s blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: Picasso | zpauly&#39;s blog">
+    <meta property="og:title" content="NDK开发学习（二）：JNI规则 | zpauly&#39;s blog">
     <meta property="og:description" content="null">
 
     <!--[if lte IE 9]>
@@ -195,145 +195,277 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
     
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#JVM查找native方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">JVM查找native方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#JNI数据类型"><span class="post-toc-number">2.</span> <span class="post-toc-text">JNI数据类型</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2016/10/19/Picasso源码学习（二）/">Picasso源码学习（二）</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-继上一篇文章简单分析了一下Picasso的图片加载流程，这次就接着小小地研究一把图片加载中最为重要的一个部分——缓存机制。当然，这段源码阅读过程自然是以上一篇文章中
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2016/10/19/Picasso源码学习（二）/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.jpg" width="44px" height="44px" alt="zpauly's avatar">
-            </div>
-            <div>
-                <strong>zpauly</strong>
-                <span>10月 19, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/拆轮子系列/">拆轮子系列</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2016/10/18/Picasso源码学习（一）/">Picasso源码学习（一）</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-
-从这里开始我会开始阅读一款来自于Square的大名鼎鼎的图片处理库P...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2016/10/18/Picasso源码学习（一）/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.jpg" width="44px" height="44px" alt="zpauly's avatar">
-            </div>
-            <div>
-                <strong>zpauly</strong>
-                <span>10月 18, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/拆轮子系列/">拆轮子系列</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                NDK开发学习（二）：JNI规则
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>zpauly</strong>
+        <span>2月 16, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/JNI/">JNI</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=NDK开发学习（二）：JNI规则&url=http://yoursite.com//2017/02/16/NDK开发学习（二）：JNI规则/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=NDK开发学习（二）：JNI规则&url=http://yoursite.com//2017/02/16/NDK开发学习（二）：JNI规则/index.html&via=zpauly" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/02/16/NDK开发学习（二）：JNI规则/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/02/16/NDK开发学习（二）：JNI规则/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com//2017/02/16/NDK开发学习（二）：JNI规则/index.html&title=NDK开发学习（二）：JNI规则" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=zpauly&#39;s blog&title=NDK开发学习（二）：JNI规则&summary=null&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/02/16/NDK开发学习（二）：JNI规则/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Material mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <a id="more"></a>
+<!--excerpt-->
+<h5 id="JVM查找native方法"><a href="#JVM查找native方法" class="headerlink" title="JVM查找native方法"></a>JVM查找native方法</h5><p>JVM 查找 native 方法有两种方式：</p>
+<ul>
+<li>按照 JNI 规范的命名规则</li>
+<li>调用 JNI 提供的 RegisterNatives 函数，将本地函数注册到 JVM 中。</li>
+</ul>
+<p>在编译我们所写的c/c++代码成动态库的时候，有两个头文件是需要的<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; jni_md.h</div><div class="line"></div><div class="line">```c++</div><div class="line">#ifndef _JAVASOFT_JNI_MD_H_</div><div class="line">#define _JAVASOFT_JNI_MD_H_</div><div class="line"></div><div class="line">#define JNIEXPORT     __attribute__((visibility(&quot;default&quot;)))</div><div class="line">#define JNIIMPORT     __attribute__((visibility(&quot;default&quot;)))</div><div class="line">#define JNICALL</div><div class="line"></div><div class="line">typedef int jint;</div><div class="line">#ifdef _LP64 /* 64-bit */</div><div class="line">typedef long jlong;</div><div class="line">#else</div><div class="line">typedef long long jlong;</div><div class="line">#endif</div><div class="line"></div><div class="line">typedef signed char jbyte;</div><div class="line">#endif /* !_JAVASOFT_JNI_MD_H_ */</div></pre></td></tr></table></figure></p>
+<p>当然，可以看到在mac平台下<code>JNIEXPORT</code>、<code>JNIIMPORT</code>、<code>JNICALL</code>并没有定义具体内容，是个空定义。</p>
+<p>至于函数的命名规则，在<a href="/2017/02/15/NDK开发学习（一）：尝试JNI/" title="NDK开发学习（一）：尝试JNI">NDK开发学习（一）：尝试JNI</a>中有提到。</p>
+<h5 id="JNI数据类型"><a href="#JNI数据类型" class="headerlink" title="JNI数据类型"></a>JNI数据类型</h5><p>首先是一个非常特殊的类型——<code>JNIEnv*</code>。它是定义任意 native 函数的第一个参数，指向 JVM 函数表的指针，函数表中的每一个入口指向一个 JNI 函数，每个函数用于访问 JVM 中特定的数据结构。</p>
+<p>其余的下面两张图可以概括</p>
+<img src="/2017/02/16/NDK开发学习（二）：JNI规则/NDK开发学习（二）：JNI规则_1.png" alt="NDK开发学习（二）：JNI规则_1.png" title="">
+<img src="/2017/02/16/NDK开发学习（二）：JNI规则/NDK开发学习（二）：JNI规则_2.png" alt="NDK开发学习（二）：JNI规则_2.png" title="">
+<p>值得注意的是JNI中所与Java中的基本数据类型对应的类型的值是可以在程序中直接使用到的，但是引用数据类型则不行。这是由于与基本类型不同，引用类型所传入的是一个指针类型，指向那个对象在JVM内存中的地址。要想从JVM内存中访问到这些数据，就需要通过<code>JNIEnv*</code>来实现。</p>
+<p>##### </p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    $('html').ready(function() {
+        setTimeout(function() {
+            var disqus_config = function () {
+                this.page.url = 'http://yoursite.com/2017/02/16/NDK开发学习（二）：JNI规则/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//null.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        },1500);
+    });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/02/15/NDK开发学习（一）：尝试JNI/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -519,6 +651,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
