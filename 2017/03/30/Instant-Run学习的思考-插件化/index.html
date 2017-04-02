@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.2.6 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Instant Run学习的思考-插件化 | 
+        
+        zpauly&#39;s blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="zpauly">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="zpauly&#39;s blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Instant Run学习的思考-插件化 | zpauly&#39;s blog">
+    <meta property="og:description" content="null">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+    body, html {
+        font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
+
+    a {
+        color: #00838F;
+    }
+
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important;
+    }
+
+    /* Sidebar User Drop Down Menu Text Color */
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+        color: #0097A7 !important;
+    }
+
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+        color: #0097A7 !important;
+    }
+
+    .toTop {
+        background: #757575 !important;
+    }
+
+    .material-layout .material-post>.material-nav,
+    .material-layout .material-index>.material-nav,
+    .material-nav a {
+        color: #757575;
+    }
+
+    #scheme-Paradox .MD-burger-layer {
+        background-color: #757575;
+    }
+
+    #scheme-Paradox #post-toc-trigger-btn {
+        color: #757575;
+    }
+
+    .post-toc a:hover {
+        color: #00838F;
+        text-decoration: underline;
+    }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-image: url(/img/cover1.jpg);
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+
+    <script src="/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/css/highlight/darkula.css">
+
+    <!-- UC Browser Compatible-->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write('<link rel="stylesheet" href="/css/uc.css">');
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置ClassLoader"><span class="post-toc-number">1.</span> <span class="post-toc-text">设置ClassLoader</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Patch过程"><span class="post-toc-number">2.</span> <span class="post-toc-text">Patch过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Instant Run学习的思考-插件化
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>zpauly</strong>
+        <span>3月 30, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Instant Run学习的思考-插件化&url=http://yoursite.com//2017/03/30/Instant-Run学习的思考-插件化/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Instant Run学习的思考-插件化&url=http://yoursite.com//2017/03/30/Instant-Run学习的思考-插件化/index.html&via=zpauly" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/03/30/Instant-Run学习的思考-插件化/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/03/30/Instant-Run学习的思考-插件化/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com//2017/03/30/Instant-Run学习的思考-插件化/index.html&title=Instant Run学习的思考-插件化" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=zpauly&#39;s blog&title=Instant Run学习的思考-插件化&summary=null&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/03/30/Instant-Run学习的思考-插件化/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Material mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>在前面一篇文章里，已经讲过了Google的Instant Run给我们带来的一个技术上的启发——热修复，在这篇里我就紧接着上一篇来对Instant Run的另一个技术启发——插件化，做一个记录和总结。<br>对于Instant Run的基本的加载流程，我在上一篇里已经做了记录和总结，这里就不多做介绍了。</p>
+<h2 id="设置ClassLoader"><a href="#设置ClassLoader" class="headerlink" title="设置ClassLoader"></a>设置ClassLoader</h2><p>我们知道，插件化简单来说就是一个应用从另一个dex或者一个apk中读取内容然后将其加载进来。但是这里有一个问题，就是要想将原本不属于自己的字节码文件加载进虚拟机中，原本的<code>classloader</code>固然是做不到的，那么就肯定要为需要加载的文件单独设置一个<code>classloader</code>才行。我们来看看Instant Run是怎么做的。</p>
+<blockquote>
+<p>BootstrapApplication</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setupClassLoaders</span><span class="params">(Context context, String codeCacheDir, <span class="keyword">long</span> apkModified)</span> </span>&#123;</div><div class="line">  List&lt;String&gt; dexList = FileManager.getDexList(context, apkModified);</div><div class="line">    </div><div class="line">  <span class="keyword">if</span> (!dexList.isEmpty()) &#123;</div><div class="line">        <span class="comment">//获取原本的classloader</span></div><div class="line">      ClassLoader classLoader = BootstrapApplication.class.getClassLoader();</div><div class="line">      String nativeLibraryPath;</div><div class="line">      <span class="comment">//获取nativeLibraryPath</span></div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">          nativeLibraryPath = (String) classLoader.getClass().getMethod(<span class="string">"getLdLibraryPath"</span>)</div><div class="line">                          .invoke(classLoader);</div><div class="line">      &#125; <span class="keyword">catch</span> (Throwable t) &#123;</div><div class="line">          nativeLibraryPath = FileManager.getNativeLibraryFolder().getPath();</div><div class="line">      &#125;</div><div class="line">      <span class="comment">//单独设置一个classloader并将其加入进来</span></div><div class="line">      IncrementalClassLoader.inject(</div><div class="line">              classLoader,</div><div class="line">              nativeLibraryPath,</div><div class="line">              codeCacheDir,</div><div class="line">              dexList);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个函数并没有什么问题，重点是<code>IncrementalClassLoader.inject()</code>方法。</p>
+<blockquote>
+<p>IncrementalClassLoader</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ClassLoader <span class="title">inject</span><span class="params">(</span></span></div><div class="line">       ClassLoader classLoader, String nativeLibraryPath, String codeCacheDir,</div><div class="line">       List&lt;String&gt; dexes) &#123;</div><div class="line">    <span class="comment">//创建IncrementalClassLoader的一个实例</span></div><div class="line">   IncrementalClassLoader incrementalClassLoader =</div><div class="line">           <span class="keyword">new</span> IncrementalClassLoader(classLoader, nativeLibraryPath, codeCacheDir, dexes);</div><div class="line">    <span class="comment">//将incrementalClassLoader设置为原本的classloader的双亲</span></div><div class="line">   setParent(classLoader, incrementalClassLoader);</div><div class="line"></div><div class="line">   <span class="keyword">return</span> incrementalClassLoader;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>IncrementalClassLoader</code>是一个继承了<code>ClassLoader</code>类的自定义classloader，我们先来看看它的创建过程。</p>
+<blockquote>
+<p>IncrementalClassLoader</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">IncrementalClassLoader</span><span class="params">(</span></span></div><div class="line">       ClassLoader original, String nativeLibraryPath, String codeCacheDir, List&lt;String&gt; dexes) &#123;</div><div class="line">   <span class="keyword">super</span>(original.getParent());</div><div class="line">    </div><div class="line">    <span class="comment">//就是创建一个delegateClassLoader</span></div><div class="line">   delegateClassLoader = createDelegateClassLoader(nativeLibraryPath, codeCacheDir, dexes,</div><div class="line">           original);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这里创建的<code>delegateClassLoader</code>究竟起了什么作用呢？我们知道<code>ClassLoader</code>是通过<code>findClass()</code>方法来寻找需要加载的类的，那来看看这个方法。</p>
+<blockquote>
+<p>IncrementalClassLoader</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> Class&lt;?&gt; findClass(String className) <span class="keyword">throws</span> ClassNotFoundException &#123;</div><div class="line">   <span class="keyword">try</span> &#123;</div><div class="line">        <span class="comment">//实际上进行加载的classloader是degelateClassLoader</span></div><div class="line">       Class&lt;?&gt; aClass = delegateClassLoader.findClass(className);</div><div class="line">       <span class="keyword">return</span> aClass;</div><div class="line">   &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</div><div class="line">       <span class="keyword">throw</span> e;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>原来<code>IncrementalClassLoader</code>其实只是一个代理，真正负责寻找类的是<code>DelegateClassLoader</code>。</p>
+<blockquote>
+<p>DelegateClassLoader</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//DelegateClasser是IncrementalClassLoader的静态内部类，它继承自BaseDexClassLoader</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DelegateClassLoader</span> <span class="keyword">extends</span> <span class="title">BaseDexClassLoader</span> </span>&#123;</div><div class="line">   <span class="function"><span class="keyword">private</span> <span class="title">DelegateClassLoader</span><span class="params">(</span></span></div><div class="line">           String dexPath, File optimizedDirectory, String libraryPath, ClassLoader parent) &#123;</div><div class="line">       <span class="keyword">super</span>(dexPath, optimizedDirectory, libraryPath, parent);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="keyword">public</span> Class&lt;?&gt; findClass(String name) <span class="keyword">throws</span> ClassNotFoundException &#123;</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           Class&lt;?&gt; aClass = <span class="keyword">super</span>.findClass(name);</div><div class="line">           <span class="keyword">return</span> aClass;</div><div class="line">       &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</div><div class="line">           <span class="keyword">throw</span> e;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>果真，作为一个继承自<code>BaseDexClassLoader</code>的类，<code>DelegateClassLoader</code>才是真正的加载者。<br>对Android中类的加载过程有所了解的同学都知道，在Android中，Google自定义了一个<code>BaseDexClassLoader</code>类，它持有一个<code>DexPathList</code>的成员变量，这个成员变量中的便是需要加载的dex文件列表。Android中通常所使用的类加载器<code>PathClassLoader</code>便是继承自<code>BaseDexClassLoader</code>并从中读取dex文件列表并加载自己所需要的类。<br>现在我们知道了<code>IncrementalClassLoader</code>的作用便是使用<code>DelegateClassLoader</code>来进行dex文件的加载。那我们再来看看<code>setParent()</code>方法是做了什么。</p>
+<blockquote>
+<p>IncrementalClassLoader</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setParent</span><span class="params">(ClassLoader classLoader, ClassLoader newParent)</span> </span>&#123;</div><div class="line">   <span class="keyword">try</span> &#123;</div><div class="line">        <span class="comment">//将原本的classloader中的parent成员变量重新赋值为IncrementalClassLoader的实例</span></div><div class="line">       Field parent = ClassLoader.class.getDeclaredField(<span class="string">"parent"</span>);</div><div class="line">       parent.setAccessible(<span class="keyword">true</span>);</div><div class="line">       parent.set(classLoader, newParent);</div><div class="line">   &#125; <span class="keyword">catch</span> (IllegalArgumentException e) &#123;</div><div class="line">       <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</div><div class="line">   &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</div><div class="line">       <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</div><div class="line">   &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</div><div class="line">       <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里的逻辑很简单，不过这里涉及到了类加载器的双亲委托机制，简单的讲就是一个classloader如果找不到它所需的类时，便会委托它的双亲classloader去寻找。因此在<code>setParent()</code>方法执行了之后，便会出现这么一个效果，原本的classloader由于只能加载宿主程序而找不到我们所需加载的dex文件，因此便会委托它的双亲——<code>IncrementalClassLoader</code>去寻找，最后便会由获取到我们的dex文件列表的<code>DelegateClassLoader</code>找到然后加载进虚拟机中。</p>
+<hr>
+<h2 id="Patch过程"><a href="#Patch过程" class="headerlink" title="Patch过程"></a>Patch过程</h2><p>patch过程要从这么两句代码讲起。</p>
+<blockquote>
+<p>BootstrapClassLoader</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">MonkeyPatcher.monkeyPatchApplication(</div><div class="line">                    BootstrapApplication.<span class="keyword">this</span>, BootstrapApplication.<span class="keyword">this</span>,</div><div class="line">                    realApplication, externalResourcePath);</div><div class="line">                    </div><div class="line">MonkeyPatcher.monkeyPatchExistingResources(BootstrapApplication.<span class="keyword">this</span>,</div><div class="line">                    externalResourcePath, <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>我们依次进入来分析一下。</p>
+<blockquote>
+<p>MonkeyPatcher</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">monkeyPatchApplication</span><span class="params">(@Nullable Context context,</span></span></div><div class="line">                                              @Nullable Application bootstrap,</div><div class="line">                                              @Nullable Application realApplication,</div><div class="line">                                              @Nullable String externalResourceFile) &#123;</div><div class="line">   <span class="keyword">try</span> &#123;</div><div class="line">        <span class="comment">//Step1.将ActivityThread中所有的Application替换为realApplication</span></div><div class="line">       Class&lt;?&gt; activityThread = Class.forName(<span class="string">"android.app.ActivityThread"</span>);</div><div class="line">       Object currentActivityThread = getActivityThread(context, activityThread);</div><div class="line"></div><div class="line">       Field mInitialApplication = activityThread.getDeclaredField(<span class="string">"mInitialApplication"</span>);</div><div class="line">       mInitialApplication.setAccessible(<span class="keyword">true</span>);</div><div class="line">       Application initialApplication = (Application) mInitialApplication.get(currentActivityThread);</div><div class="line">       <span class="keyword">if</span> (realApplication != <span class="keyword">null</span> &amp;&amp; initialApplication == bootstrap) &#123;</div><div class="line">           mInitialApplication.set(currentActivityThread, realApplication);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (realApplication != <span class="keyword">null</span>) &#123;</div><div class="line">           Field mAllApplications = activityThread.getDeclaredField(<span class="string">"mAllApplications"</span>);</div><div class="line">           mAllApplications.setAccessible(<span class="keyword">true</span>);</div><div class="line">           List&lt;Application&gt; allApplications = (List&lt;Application&gt;) mAllApplications</div><div class="line">                   .get(currentActivityThread);</div><div class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; allApplications.size(); i++) &#123;</div><div class="line">               <span class="keyword">if</span> (allApplications.get(i) == bootstrap) &#123;</div><div class="line">                   allApplications.set(i, realApplication);</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">        <span class="comment">//Step2.将所有的LoadApk或是PackageInfo中的Application替换为realApplication以及另外一些替换工作</span></div><div class="line">       Class&lt;?&gt; loadedApkClass;</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           loadedApkClass = Class.forName(<span class="string">"android.app.LoadedApk"</span>);</div><div class="line">       &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</div><div class="line">           loadedApkClass = Class.forName(<span class="string">"android.app.ActivityThread$PackageInfo"</span>);</div><div class="line">       &#125;</div><div class="line">       Field mApplication = loadedApkClass.getDeclaredField(<span class="string">"mApplication"</span>);</div><div class="line">       mApplication.setAccessible(<span class="keyword">true</span>);</div><div class="line">       Field mResDir = loadedApkClass.getDeclaredField(<span class="string">"mResDir"</span>);</div><div class="line">       mResDir.setAccessible(<span class="keyword">true</span>);</div><div class="line"></div><div class="line">       Field mLoadedApk = <span class="keyword">null</span>;</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           mLoadedApk = Application.class.getDeclaredField(<span class="string">"mLoadedApk"</span>);</div><div class="line">       &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">for</span> (String fieldName : <span class="keyword">new</span> String[]&#123;<span class="string">"mPackages"</span>, <span class="string">"mResourcePackages"</span>&#125;) &#123;</div><div class="line">           Field field = activityThread.getDeclaredField(fieldName);</div><div class="line">           field.setAccessible(<span class="keyword">true</span>);</div><div class="line">           Object value = field.get(currentActivityThread);</div><div class="line"></div><div class="line">           <span class="keyword">for</span> (Map.Entry&lt;String, WeakReference&lt;?&gt;&gt; entry :</div><div class="line">                   ((Map&lt;String, WeakReference&lt;?&gt;&gt;) value).entrySet()) &#123;</div><div class="line">               Object loadedApk = entry.getValue().get();</div><div class="line">               <span class="keyword">if</span> (loadedApk == <span class="keyword">null</span>) &#123;</div><div class="line">                   <span class="keyword">continue</span>;</div><div class="line">               &#125;</div><div class="line"></div><div class="line">               <span class="keyword">if</span> (mApplication.get(loadedApk) == bootstrap) &#123;</div><div class="line">                    <span class="comment">//将Application替换为realApplication</span></div><div class="line">                   <span class="keyword">if</span> (realApplication != <span class="keyword">null</span>) &#123;</div><div class="line">                       mApplication.set(loadedApk, realApplication);</div><div class="line">                   &#125;</div><div class="line">                   <span class="comment">//将mResDir替换为我们自己的apk文件中的res文件路径</span></div><div class="line">                   <span class="keyword">if</span> (externalResourceFile != <span class="keyword">null</span>) &#123;</div><div class="line">                       mResDir.set(loadedApk, externalResourceFile);</div><div class="line">                   &#125;</div><div class="line">                    <span class="comment">//将Application中的LoadApk替换为我们自己的LoadApk</span></div><div class="line">                   <span class="keyword">if</span> (realApplication != <span class="keyword">null</span> &amp;&amp; mLoadedApk != <span class="keyword">null</span>) &#123;</div><div class="line">                       mLoadedApk.set(realApplication, loadedApk);</div><div class="line">                   &#125;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125; <span class="keyword">catch</span> (Throwable e) &#123;</div><div class="line">       <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(e);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码虽然很长，但是所做的事情实际上很简单，就是一个词——替换，将运行期间所有的<code>Application</code>替换为<code>realApplication</code>，将所有原本的asset目录路径替换为我们自己的asset目录路径。当然，如果想要弄清楚，光是看这段代码肯定还是会有所难以理解的，一定要结合着Android中的源码一起看才行。<br>再来看看<code>MonkeyPatcher.monkeyPatchExistingResources()</code>方法。</p>
+<blockquote>
+<p>MonkeyPatcher</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">monkeyPatchExistingResources</span><span class="params">(@Nullable Context context,</span></span></div><div class="line">                                               @Nullable String externalResourceFile,</div><div class="line">                                               @Nullable Collection&lt;Activity&gt; activities) &#123;</div><div class="line">    <span class="keyword">if</span> (externalResourceFile == <span class="keyword">null</span>) &#123;</div><div class="line">       <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">   </div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="comment">//的事情也是相当的简单，就是将运行期间所有的原asset路径和Resources对象都替换为我们自己的项目的asset路</span></div><div class="line">       AssetManager newAssetManager = AssetManager.class.getConstructor().newInstance();</div><div class="line">       Method mAddAssetPath = AssetManager.class.getDeclaredMethod(<span class="string">"addAssetPath"</span>, String.class);</div><div class="line">       mAddAssetPath.setAccessible(<span class="keyword">true</span>);</div><div class="line">       <span class="keyword">if</span> (((Integer) mAddAssetPath.invoke(newAssetManager, externalResourceFile)) == <span class="number">0</span>) &#123;</div><div class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Could not create new AssetManager"</span>);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       Method mEnsureStringBlocks = AssetManager.class.getDeclaredMethod(<span class="string">"ensureStringBlocks"</span>);</div><div class="line">       mEnsureStringBlocks.setAccessible(<span class="keyword">true</span>);</div><div class="line">       mEnsureStringBlocks.invoke(newAssetManager);</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (activities != <span class="keyword">null</span>) &#123;</div><div class="line">           <span class="keyword">for</span> (Activity activity : activities) &#123;</div><div class="line">               Resources resources = activity.getResources();</div><div class="line"></div><div class="line">               <span class="keyword">try</span> &#123;</div><div class="line">                   Field mAssets = Resources.class.getDeclaredField(<span class="string">"mAssets"</span>);</div><div class="line">                   mAssets.setAccessible(<span class="keyword">true</span>);</div><div class="line">                   mAssets.set(resources, newAssetManager);</div><div class="line">               &#125; <span class="keyword">catch</span> (Throwable ignore) &#123;</div><div class="line">                   Field mResourcesImpl = Resources.class.getDeclaredField(<span class="string">"mResourcesImpl"</span>);</div><div class="line">                   mResourcesImpl.setAccessible(<span class="keyword">true</span>);</div><div class="line">                   Object resourceImpl = mResourcesImpl.get(resources);</div><div class="line">                   Field implAssets = resourceImpl.getClass().getDeclaredField(<span class="string">"mAssets"</span>);</div><div class="line">                   implAssets.setAccessible(<span class="keyword">true</span>);</div><div class="line">                   implAssets.set(resourceImpl, newAssetManager);</div><div class="line">               &#125;</div><div class="line"></div><div class="line">               Resources.Theme theme = activity.getTheme();</div><div class="line">               <span class="keyword">try</span> &#123;</div><div class="line">                   <span class="keyword">try</span> &#123;</div><div class="line">                       Field ma = Resources.Theme.class.getDeclaredField(<span class="string">"mAssets"</span>);</div><div class="line">                       ma.setAccessible(<span class="keyword">true</span>);</div><div class="line">                       ma.set(theme, newAssetManager);</div><div class="line">                   &#125; <span class="keyword">catch</span> (NoSuchFieldException ignore) &#123;</div><div class="line">                       Field themeField = Resources.Theme.class.getDeclaredField(<span class="string">"mThemeImpl"</span>);</div><div class="line">                       themeField.setAccessible(<span class="keyword">true</span>);</div><div class="line">                       Object impl = themeField.get(theme);</div><div class="line">                       Field ma = impl.getClass().getDeclaredField(<span class="string">"mAssets"</span>);</div><div class="line">                       ma.setAccessible(<span class="keyword">true</span>);</div><div class="line">                       ma.set(impl, newAssetManager);</div><div class="line">                   &#125;</div><div class="line"></div><div class="line">                   Field mt = ContextThemeWrapper.class.getDeclaredField(<span class="string">"mTheme"</span>);</div><div class="line">                   mt.setAccessible(<span class="keyword">true</span>);</div><div class="line">                   mt.set(activity, <span class="keyword">null</span>);</div><div class="line">                   Method mtm = ContextThemeWrapper.class.getDeclaredMethod(<span class="string">"initializeTheme"</span>);</div><div class="line">                   mtm.setAccessible(<span class="keyword">true</span>);</div><div class="line">                   mtm.invoke(activity);</div><div class="line"></div><div class="line">                   Method mCreateTheme = AssetManager.class.getDeclaredMethod(<span class="string">"createTheme"</span>);</div><div class="line">                   mCreateTheme.setAccessible(<span class="keyword">true</span>);</div><div class="line">                   Object internalTheme = mCreateTheme.invoke(newAssetManager);</div><div class="line">                   Field mTheme = Resources.Theme.class.getDeclaredField(<span class="string">"mTheme"</span>);</div><div class="line">                   mTheme.setAccessible(<span class="keyword">true</span>);</div><div class="line">                   mTheme.set(theme, internalTheme);</div><div class="line">               &#125; <span class="keyword">catch</span> (Throwable e) &#123;</div><div class="line">                   </div><div class="line">               &#125;</div><div class="line"></div><div class="line">               pruneResourceCaches(resources);</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       Collection&lt;WeakReference&lt;Resources&gt;&gt; references;</div><div class="line">       <span class="keyword">if</span> (SDK_INT &gt;= KITKAT) &#123;</div><div class="line">       </div><div class="line">           Class&lt;?&gt; resourcesManagerClass = Class.forName(<span class="string">"android.app.ResourcesManager"</span>);</div><div class="line">           Method mGetInstance = resourcesManagerClass.getDeclaredMethod(<span class="string">"getInstance"</span>);</div><div class="line">           mGetInstance.setAccessible(<span class="keyword">true</span>);</div><div class="line">           Object resourcesManager = mGetInstance.invoke(<span class="keyword">null</span>);</div><div class="line">           <span class="keyword">try</span> &#123;</div><div class="line">               Field fMActiveResources = resourcesManagerClass.getDeclaredField(<span class="string">"mActiveResources"</span>);</div><div class="line">               fMActiveResources.setAccessible(<span class="keyword">true</span>);</div><div class="line">               <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</div><div class="line">               ArrayMap&lt;?, WeakReference&lt;Resources&gt;&gt; arrayMap =</div><div class="line">                       (ArrayMap&lt;?, WeakReference&lt;Resources&gt;&gt;) fMActiveResources.get(resourcesManager);</div><div class="line">               references = arrayMap.values();</div><div class="line">           &#125; <span class="keyword">catch</span> (NoSuchFieldException ignore) &#123;</div><div class="line">               Field mResourceReferences = resourcesManagerClass.getDeclaredField(<span class="string">"mResourceReferences"</span>);</div><div class="line">               mResourceReferences.setAccessible(<span class="keyword">true</span>);</div><div class="line">               references = (Collection&lt;WeakReference&lt;Resources&gt;&gt;) mResourceReferences.get(resourcesManager);</div><div class="line">           &#125;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           Class&lt;?&gt; activityThread = Class.forName(<span class="string">"android.app.ActivityThread"</span>);</div><div class="line">           Field fMActiveResources = activityThread.getDeclaredField(<span class="string">"mActiveResources"</span>);</div><div class="line">           fMActiveResources.setAccessible(<span class="keyword">true</span>);</div><div class="line">           Object thread = getActivityThread(context, activityThread);</div><div class="line">           <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</div><div class="line">           HashMap&lt;?, WeakReference&lt;Resources&gt;&gt; map =</div><div class="line">                   (HashMap&lt;?, WeakReference&lt;Resources&gt;&gt;) fMActiveResources.get(thread);</div><div class="line">           references = map.values();</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">for</span> (WeakReference&lt;Resources&gt; wr : references) &#123;</div><div class="line">           Resources resources = wr.get();</div><div class="line">           <span class="keyword">if</span> (resources != <span class="keyword">null</span>) &#123;</div><div class="line">               <span class="keyword">try</span> &#123;</div><div class="line">                   Field mAssets = Resources.class.getDeclaredField(<span class="string">"mAssets"</span>);</div><div class="line">                   mAssets.setAccessible(<span class="keyword">true</span>);</div><div class="line">                   mAssets.set(resources, newAssetManager);</div><div class="line">               &#125; <span class="keyword">catch</span> (Throwable ignore) &#123;</div><div class="line">                   Field mResourcesImpl = Resources.class.getDeclaredField(<span class="string">"mResourcesImpl"</span>);</div><div class="line">                   mResourcesImpl.setAccessible(<span class="keyword">true</span>);</div><div class="line">                   Object resourceImpl = mResourcesImpl.get(resources);</div><div class="line">                   Field implAssets = resourceImpl.getClass().getDeclaredField(<span class="string">"mAssets"</span>);</div><div class="line">                   implAssets.setAccessible(<span class="keyword">true</span>);</div><div class="line">                   implAssets.set(resourceImpl, newAssetManager);</div><div class="line">               &#125;</div><div class="line"></div><div class="line">               resources.updateConfiguration(resources.getConfiguration(), resources.getDisplayMetrics());</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125; <span class="keyword">catch</span> (Throwable e) &#123;</div><div class="line">       <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(e);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段方法虽然很长，但是实际上做的事情也是相当的简单，就是将运行期间所有的原asset路径和Resources对象都替换为我们自己的项目的asset路径和Resources对象。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在之前我也看过一些有关插件化的文章和框架，以前的博客中也对看到资料也有所提及，但Instant Run所提供的思路和其他的都有所不同。<br>首先，想要加载插件中的内容，首先一定要做的事情就是要生成一个对应的classloader去专门对插件进行寻找和加载工作。<br>在对于Java层的插件的加载上，最主要需要注意的就是将运行期间所有原本的<code>Application</code>替换为我们自己的<code>realApplication</code>。这么做的主要的原因就是这样可以将原本的环境由宿主程序切换为我们自己的应用，这样有了正常的环境便无需再通过其他手段去加载我们自己应用的四大组件了。<br>插件化除运行环境外的另一个重点就是对于资源文件的加载。这里提供的方案就是将所有的asset和res等资源路径都通过反射替换为我们自己的应用中的路径，简单高效。<br>当然，Instant Run毕竟是对于Java层做的插件化工作，对于令人头疼的native层并没有做任何其他的工作，不过这对于大部分应用来说已经足够了。</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    $('html').ready(function() {
+        setTimeout(function() {
+            var disqus_config = function () {
+                this.page.url = 'http://yoursite.com/2017/03/30/Instant-Run学习的思考-插件化/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//null.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        },1500);
+    });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/26/Instant-Run学习的思考-热修复/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpg" alt="zpauly's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        mailto:zpauly1996@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:zpauly1996@gmail.com" target="_blank" title="Email Me">
+                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+            主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+    <!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+    -->
+
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">1</span></a>
+        </ul>
+    </li>
+
+    <!-- Categories  -->
+    
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+  	
+        <li>
+            <a href="tags" title="标签">
+                
+                标签
+            </a>
+        </li>
+  	
+        <li>
+            <a href="links" title="友情链接">
+                
+                友情链接
+            </a>
+        </li>
+  	
+        <li>
+            <a href="/about/" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+  	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+            文章总数
+            <span class="sidebar-badge">11</span>
+        </a>
+    </li>
+</ul>
+
+
+        <!-- Sidebar Divider -->
+        <div class="sidebar-divider"></div>
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        主题 - Material
+        <span class="sidebar-badge badge-circle">i</span>
+    </div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+    sidebar.help
+    <span class="mdl-button__ripple-container">
+      <span class="mdl-ripple"></span>
+    </span>
+  </div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+    </div>
+
+    <!-- Sidebar Sponsor -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+        <a href="https://plus.google.com/105895756519745467328" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/5717069445/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/zpauly" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/zhang-yu-9-96-30/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;zpauly's blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//null.disqus.com/count.js" async></script>
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+    <script>
+    var searchFunc = function(path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: 'xml',
+            success: function( xmlResponse ) {
+                // get the contents from search data
+                var datas = $( 'entry', xmlResponse ).map(function() {
+                    return {
+                        title: $( 'title', this ).text(),
+                        content: $('content',this).text(),
+                        url: $( 'url' , this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function() {
+                    var str='<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function(data) {
+                        var isMatch = true;
+                        var content_index = [];
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                        var data_url = data.url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if(data_title != '' && data_content != '') {
+                            keywords.forEach(function(keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if( index_title < 0 && index_content < 0 ) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += '<li><a href="'+ data_url +'" class="search-result-title" target="_blank">'+ data_title;
+                            var content = data.content.trim().replace(/<[^>]+>/g, '');
+                            if (first_occur >= 0) {
+                                // cut out characters
+                                var start = first_occur - 6;
+                                var end = first_occur + 6;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 10;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, 'gi');
+                                    match_content = match_content.replace(regS, '<em class="search-keyword">'+keyword+'</em>');
+                                })
+                                str += '<p class="search-result">' + match_content +'...</p>' +'</a>';
+                            }
+                        }
+                    });
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    }
+</script>
+
+
+    <script>
+        var inputArea = document.querySelector('#search');
+        var getSearchFile = function() {
+            var path = 'search.xml';
+            searchFunc(path, 'search', 'local-search-result');
+        }
+
+        if(inputArea) {
+            inputArea.onfocus = function() {
+                getSearchFile();
+            }
+        }
+    </script>
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>
