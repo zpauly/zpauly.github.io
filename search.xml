@@ -161,7 +161,7 @@
     
     <entry>
       <title><![CDATA[Android性能优化方法总结]]></title>
-      <url>http://yoursite.com/2017/03/10/Android%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</url>
+      <url>http://yoursite.com/2017/03/07/Android%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>这段时间好好总结了一下Android性能优化的内容。对于其中的各种原理和各种工具的使用方法这里就不多做介绍了，相关资料确实相当多。下面就是我对于常见的性能优化方法的一个简单的总结。</p>
 <h1 id="内存优化原则"><a href="#内存优化原则" class="headerlink" title="内存优化原则"></a>内存优化原则</h1><ul>
 <li>尽量不要在循环中创建很多临时变量。</li>
